@@ -1,0 +1,26 @@
+[
+  {
+    "id": "bu_hq",
+    "name": "EduPath HQ",
+    "description": "Parent BU. Holds Salesforce sync DEs, parent segment, shared subscriber DEs, and shared content.",
+    "parent_id": null
+  },
+  {
+    "id": "bu_north",
+    "name": "North Region",
+    "description": "Child BU for the North region. Demo Student and Franchisee Lead journeys.",
+    "parent_id": "bu_hq"
+  },
+  {
+    "id": "bu_south",
+    "name": "South Region",
+    "description": "Child BU for the South region. Demo Student and Franchisee Lead journeys.",
+    "parent_id": "bu_hq"
+  },
+  {
+    "id": "bu_east",
+    "name": "East Region",
+    "description": "Child BU for the East region. Same journey structure as the South region.",
+    "parent_id": "bu_hq"
+  }
+]

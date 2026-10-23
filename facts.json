@@ -1,0 +1,12 @@
+{
+ "_about": "Facts the drift monitor checks this repo's docs against. 'banned' = old names that must not appear in README/CLAUDE.md/STATUS.md/docs; 'allow' = files exempt; 'ignore' = checks that are intentional here.",
+ "repo": "mc-journey-builder",
+ "database": "none (JSON files)",
+ "hosting": "local",
+ "domain": "",
+ "url": "",
+ "services": [
+  "Claude API"
+ ],
+ "banned": []
+}

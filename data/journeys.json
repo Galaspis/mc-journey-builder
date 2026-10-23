@@ -1,0 +1,2620 @@
+[
+  {
+    "id": "so_new_student",
+    "name": "New Student — South",
+    "description": "5-email nurture for new demo lesson leads. Checks Status=New at 3 points — stops early if status changed.",
+    "business_unit_id": "bu_south",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "so_demo_new",
+      "schedule": "Hourly 11:55 HQ time"
+    },
+    "re_entry": false,
+    "goal": "so_ns_exit",
+    "steps": [
+      {
+        "id": "so_ns_email1",
+        "name": "Email 1 — Welcome",
+        "type": "email",
+        "config": {
+          "email_name": "SO_New_Email_1"
+        },
+        "next": "so_ns_wait1"
+      },
+      {
+        "id": "so_ns_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "so_ns_email2"
+      },
+      {
+        "id": "so_ns_email2",
+        "name": "Email 2",
+        "type": "email",
+        "config": {
+          "email_name": "SO_New_Email_2"
+        },
+        "next": "so_ns_check1"
+      },
+      {
+        "id": "so_ns_check1",
+        "name": "Still New? (Check 1)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "New"
+          }
+        },
+        "next": {
+          "yes": "so_ns_wait2",
+          "no": "so_ns_exit"
+        }
+      },
+      {
+        "id": "so_ns_wait2",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "so_ns_email3"
+      },
+      {
+        "id": "so_ns_email3",
+        "name": "Email 3",
+        "type": "email",
+        "config": {
+          "email_name": "SO_New_Email_3"
+        },
+        "next": "so_ns_wait3"
+      },
+      {
+        "id": "so_ns_wait3",
+        "name": "Wait 2 Days",
+        "type": "wait",
+        "config": {
+          "duration": 2,
+          "unit": "days"
+        },
+        "next": "so_ns_check2"
+      },
+      {
+        "id": "so_ns_check2",
+        "name": "Still New? (Check 2)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "New"
+          }
+        },
+        "next": {
+          "yes": "so_ns_email4",
+          "no": "so_ns_exit"
+        }
+      },
+      {
+        "id": "so_ns_email4",
+        "name": "Email 4",
+        "type": "email",
+        "config": {
+          "email_name": "SO_New_Email_4"
+        },
+        "next": "so_ns_wait4"
+      },
+      {
+        "id": "so_ns_wait4",
+        "name": "Wait 4 Days",
+        "type": "wait",
+        "config": {
+          "duration": 4,
+          "unit": "days"
+        },
+        "next": "so_ns_check3"
+      },
+      {
+        "id": "so_ns_check3",
+        "name": "Still New? (Check 3)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "New"
+          }
+        },
+        "next": {
+          "yes": "so_ns_email5",
+          "no": "so_ns_exit"
+        }
+      },
+      {
+        "id": "so_ns_email5",
+        "name": "Email 5 — Final",
+        "type": "email",
+        "config": {
+          "email_name": "SO_New_Email_5"
+        },
+        "next": "so_ns_wait5"
+      },
+      {
+        "id": "so_ns_wait5",
+        "name": "Wait 2 Min",
+        "type": "wait",
+        "config": {
+          "duration": 2,
+          "unit": "minutes"
+        },
+        "next": "so_ns_exit"
+      },
+      {
+        "id": "so_ns_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "so_fuc_student",
+    "name": "Follow Up Call — Student (South)",
+    "description": "Reminder email day before the scheduled follow-up call. Re-entry allowed.",
+    "business_unit_id": "bu_south",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "so_demo_fuc",
+      "schedule": "Daily 3:00 pm HQ time"
+    },
+    "re_entry": true,
+    "goal": "so_fuc_s_exit",
+    "steps": [
+      {
+        "id": "so_fuc_s_email1",
+        "name": "Email 1 — Follow Up Call Reminder",
+        "type": "email",
+        "config": {
+          "email_name": "SO_Follow_Up_Call_Email_1"
+        },
+        "next": "so_fuc_s_wait1"
+      },
+      {
+        "id": "so_fuc_s_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "so_fuc_s_exit"
+      },
+      {
+        "id": "so_fuc_s_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "so_pending_demo",
+    "name": "Pending Demo — South",
+    "description": "Confirmation email sent when contact signs up for a demo. Triggered minutely after automation finishes.",
+    "business_unit_id": "bu_south",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "so_demo_pending_demo",
+      "schedule": "Minutely after automation"
+    },
+    "re_entry": false,
+    "goal": "so_pd_exit",
+    "steps": [
+      {
+        "id": "so_pd_email1",
+        "name": "Email 1 — Demo Confirmation",
+        "type": "email",
+        "config": {
+          "email_name": "SO_Pending_Demo_Email_1"
+        },
+        "next": "so_pd_wait1"
+      },
+      {
+        "id": "so_pd_wait1",
+        "name": "Wait 3 Min",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "minutes"
+        },
+        "next": "so_pd_exit"
+      },
+      {
+        "id": "so_pd_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "so_pending_reminder",
+    "name": "Pending Reminder Demo — South",
+    "description": "Day-before demo reminder. Re-entry allowed (contact can get reminder for rescheduled dates).",
+    "business_unit_id": "bu_south",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "so_demo_pending_reminder",
+      "schedule": "Daily 1:30 pm HQ time"
+    },
+    "re_entry": true,
+    "goal": "so_pr_exit",
+    "steps": [
+      {
+        "id": "so_pr_email1",
+        "name": "Email 1 — Demo Reminder (Tomorrow)",
+        "type": "email",
+        "config": {
+          "email_name": "SO_Pending_Reminder_Demo_Email_1"
+        },
+        "next": "so_pr_wait1"
+      },
+      {
+        "id": "so_pr_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "so_pr_exit"
+      },
+      {
+        "id": "so_pr_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "so_show_demo",
+    "name": "Show Demo (Attended) — South",
+    "description": "4-email post-demo nurture for contacts who attended. Checks Status_in_LG=Done Demo at each step — stops if they converted.",
+    "business_unit_id": "bu_south",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "so_demo_show_demo",
+      "schedule": "Daily 12:30 pm WET"
+    },
+    "re_entry": false,
+    "goal": "so_sd_exit",
+    "steps": [
+      {
+        "id": "so_sd_email1",
+        "name": "Email 1 — Post Demo",
+        "type": "email",
+        "config": {
+          "email_name": "SO_Show_Demo_Email_1"
+        },
+        "next": "so_sd_wait1"
+      },
+      {
+        "id": "so_sd_wait1",
+        "name": "Wait 2 Days",
+        "type": "wait",
+        "config": {
+          "duration": 2,
+          "unit": "days"
+        },
+        "next": "so_sd_check1"
+      },
+      {
+        "id": "so_sd_check1",
+        "name": "Still Done Demo? (Check 1)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status_in_LG",
+            "operator": "equals",
+            "value": "Done Demo"
+          }
+        },
+        "next": {
+          "yes": "so_sd_email2",
+          "no": "so_sd_exit"
+        }
+      },
+      {
+        "id": "so_sd_email2",
+        "name": "Email 2",
+        "type": "email",
+        "config": {
+          "email_name": "SO_Show_Demo_Email_2"
+        },
+        "next": "so_sd_wait2"
+      },
+      {
+        "id": "so_sd_wait2",
+        "name": "Wait 3 Days",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "days"
+        },
+        "next": "so_sd_check2"
+      },
+      {
+        "id": "so_sd_check2",
+        "name": "Still Done Demo? (Check 2)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status_in_LG",
+            "operator": "equals",
+            "value": "Done Demo"
+          }
+        },
+        "next": {
+          "yes": "so_sd_email3",
+          "no": "so_sd_exit"
+        }
+      },
+      {
+        "id": "so_sd_email3",
+        "name": "Email 3",
+        "type": "email",
+        "config": {
+          "email_name": "SO_Show_Demo_Email_3"
+        },
+        "next": "so_sd_wait3"
+      },
+      {
+        "id": "so_sd_wait3",
+        "name": "Wait 3 Days",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "days"
+        },
+        "next": "so_sd_check3"
+      },
+      {
+        "id": "so_sd_check3",
+        "name": "Still Done Demo? (Check 3)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status_in_LG",
+            "operator": "equals",
+            "value": "Done Demo"
+          }
+        },
+        "next": {
+          "yes": "so_sd_email4",
+          "no": "so_sd_exit"
+        }
+      },
+      {
+        "id": "so_sd_email4",
+        "name": "Email 4 — Final",
+        "type": "email",
+        "config": {
+          "email_name": "SO_Show_Demo_Email_4"
+        },
+        "next": "so_sd_wait4"
+      },
+      {
+        "id": "so_sd_wait4",
+        "name": "Wait 3 Min",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "minutes"
+        },
+        "next": "so_sd_exit"
+      },
+      {
+        "id": "so_sd_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "so_no_show_demo",
+    "name": "Not Show Demo — South",
+    "description": "Single email + 8-day wait for contacts who didn't attend. Re-entry allowed.",
+    "business_unit_id": "bu_south",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "so_demo_no_show",
+      "schedule": "Daily 3:00 PM WET"
+    },
+    "re_entry": true,
+    "goal": "so_nsd_exit",
+    "steps": [
+      {
+        "id": "so_nsd_email1",
+        "name": "Email 1 — Missed Demo",
+        "type": "email",
+        "config": {
+          "email_name": "SO_Not_Show_Demo_Email_1"
+        },
+        "next": "so_nsd_wait1"
+      },
+      {
+        "id": "so_nsd_wait1",
+        "name": "Wait 8 Days",
+        "type": "wait",
+        "config": {
+          "duration": 8,
+          "unit": "days"
+        },
+        "next": "so_nsd_exit"
+      },
+      {
+        "id": "so_nsd_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "so_new_franchisee",
+    "name": "New Franchisee — South",
+    "description": "3-email nurture for new franchisee leads. Checks Status=New at 2 decision points.",
+    "business_unit_id": "bu_south",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "so_fr_new",
+      "schedule": "Hourly 5:30 pm HQ time"
+    },
+    "re_entry": false,
+    "goal": "so_nf_exit",
+    "steps": [
+      {
+        "id": "so_nf_email1",
+        "name": "Email 1 — Welcome Franchisee",
+        "type": "email",
+        "config": {
+          "email_name": "SO_New_Franchisee_Email_1"
+        },
+        "next": "so_nf_wait1"
+      },
+      {
+        "id": "so_nf_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "so_nf_check1"
+      },
+      {
+        "id": "so_nf_check1",
+        "name": "Still New? (Check 1)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "New"
+          }
+        },
+        "next": {
+          "yes": "so_nf_email2",
+          "no": "so_nf_exit"
+        }
+      },
+      {
+        "id": "so_nf_email2",
+        "name": "Email 2",
+        "type": "email",
+        "config": {
+          "email_name": "SO_New_Franchisee_Email_2"
+        },
+        "next": "so_nf_wait2"
+      },
+      {
+        "id": "so_nf_wait2",
+        "name": "Wait 2 Days",
+        "type": "wait",
+        "config": {
+          "duration": 2,
+          "unit": "days"
+        },
+        "next": "so_nf_check2"
+      },
+      {
+        "id": "so_nf_check2",
+        "name": "Still New? (Check 2)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "New"
+          }
+        },
+        "next": {
+          "yes": "so_nf_email3",
+          "no": "so_nf_exit"
+        }
+      },
+      {
+        "id": "so_nf_email3",
+        "name": "Email 3 — Final",
+        "type": "email",
+        "config": {
+          "email_name": "SO_New_Franchisee_Email_3"
+        },
+        "next": "so_nf_exit"
+      },
+      {
+        "id": "so_nf_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "so_fuc_franchisee",
+    "name": "Follow Up Call — Franchisee (South)",
+    "description": "Reminder email day before the franchisee follow-up call. Re-entry allowed.",
+    "business_unit_id": "bu_south",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "so_fr_fuc",
+      "schedule": "Daily 3:00 pm WET"
+    },
+    "re_entry": true,
+    "goal": "so_fuf_exit",
+    "steps": [
+      {
+        "id": "so_fuf_email1",
+        "name": "Email 1 — Call Tomorrow Reminder",
+        "type": "email",
+        "config": {
+          "email_name": "SO_Follow_Up_Call_Franchisee_Email_1"
+        },
+        "next": "so_fuf_wait1"
+      },
+      {
+        "id": "so_fuf_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "so_fuf_exit"
+      },
+      {
+        "id": "so_fuf_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "so_prospect_franchisee",
+    "name": "Prospect Franchisee — South",
+    "description": "Confirmation email when a prospect meeting is booked. No re-entry.",
+    "business_unit_id": "bu_south",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "so_fr_prospect",
+      "schedule": "Daily 12:00 pm WET"
+    },
+    "re_entry": false,
+    "goal": "so_pf_exit",
+    "steps": [
+      {
+        "id": "so_pf_email1",
+        "name": "Email 1 — Meeting Confirmed",
+        "type": "email",
+        "config": {
+          "email_name": "SO_Prospect_Franchisee_Email_1"
+        },
+        "next": "so_pf_wait1"
+      },
+      {
+        "id": "so_pf_wait1",
+        "name": "Wait 3 Min",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "minutes"
+        },
+        "next": "so_pf_exit"
+      },
+      {
+        "id": "so_pf_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "so_prospect_reminder_franchisee",
+    "name": "Prospect Reminder Franchisee — South",
+    "description": "Day-before reminder for the prospect meeting. Re-entry allowed.",
+    "business_unit_id": "bu_south",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "so_fr_prospect_reminder",
+      "schedule": "Daily 12:00 pm WET"
+    },
+    "re_entry": true,
+    "goal": "so_pfr_exit",
+    "steps": [
+      {
+        "id": "so_pfr_email1",
+        "name": "Email 1 — Meeting Tomorrow",
+        "type": "email",
+        "config": {
+          "email_name": "SO_Prospect_Franchisee_Email_2"
+        },
+        "next": "so_pfr_wait1"
+      },
+      {
+        "id": "so_pfr_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "so_pfr_exit"
+      },
+      {
+        "id": "so_pfr_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "so_nda_signed_franchisee",
+    "name": "NDA Signed Franchisee — South",
+    "description": "3-email nurture after NDA is signed. Checks Status=NDA Signed at each step — stops if they progressed to next stage.",
+    "business_unit_id": "bu_south",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "so_fr_nda_signed",
+      "schedule": "Daily 1:00 pm WET"
+    },
+    "re_entry": false,
+    "goal": "so_ndas_exit",
+    "steps": [
+      {
+        "id": "so_ndas_email1",
+        "name": "Email 1 — NDA Signed Welcome",
+        "type": "email",
+        "config": {
+          "email_name": "SO_NDA_Signed_Franchisee_Email_1"
+        },
+        "next": "so_ndas_wait1"
+      },
+      {
+        "id": "so_ndas_wait1",
+        "name": "Wait 2 Days",
+        "type": "wait",
+        "config": {
+          "duration": 2,
+          "unit": "days"
+        },
+        "next": "so_ndas_check1"
+      },
+      {
+        "id": "so_ndas_check1",
+        "name": "Still NDA Signed? (Check 1)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "NDA Signed"
+          }
+        },
+        "next": {
+          "yes": "so_ndas_email2",
+          "no": "so_ndas_exit"
+        }
+      },
+      {
+        "id": "so_ndas_email2",
+        "name": "Email 2 — Follow-up",
+        "type": "email",
+        "config": {
+          "email_name": "SO_NDA_Signed_Franchisee_Email_2"
+        },
+        "next": "so_ndas_wait2"
+      },
+      {
+        "id": "so_ndas_wait2",
+        "name": "Wait 2 Days",
+        "type": "wait",
+        "config": {
+          "duration": 2,
+          "unit": "days"
+        },
+        "next": "so_ndas_check2"
+      },
+      {
+        "id": "so_ndas_check2",
+        "name": "Still NDA Signed? (Check 2)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "NDA Signed"
+          }
+        },
+        "next": {
+          "yes": "so_ndas_email3",
+          "no": "so_ndas_exit"
+        }
+      },
+      {
+        "id": "so_ndas_email3",
+        "name": "Email 3 — Final Push",
+        "type": "email",
+        "config": {
+          "email_name": "SO_NDA_Signed_Franchisee_Email_3"
+        },
+        "next": "so_ndas_wait3"
+      },
+      {
+        "id": "so_ndas_wait3",
+        "name": "Wait 3 Min",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "minutes"
+        },
+        "next": "so_ndas_exit"
+      },
+      {
+        "id": "so_ndas_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "so_ppt_booked_franchisee",
+    "name": "PPT Booked Franchisee — South",
+    "description": "Confirmation email when PPT meeting is booked. No re-entry.",
+    "business_unit_id": "bu_south",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "so_fr_ppt_booked",
+      "schedule": "Daily 12:30 pm WET"
+    },
+    "re_entry": false,
+    "goal": "so_pptb_exit",
+    "steps": [
+      {
+        "id": "so_pptb_email1",
+        "name": "Email 1 — PPT Meeting Confirmed",
+        "type": "email",
+        "config": {
+          "email_name": "SO_PPT_Booked_Franchisee_Email_1"
+        },
+        "next": "so_pptb_wait1"
+      },
+      {
+        "id": "so_pptb_wait1",
+        "name": "Wait 3 Min",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "minutes"
+        },
+        "next": "so_pptb_exit"
+      },
+      {
+        "id": "so_pptb_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "so_ppt_reminder_franchisee",
+    "name": "PPT Booked Reminder Franchisee — South",
+    "description": "Day-before reminder for the PPT meeting. Re-entry allowed.",
+    "business_unit_id": "bu_south",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "so_fr_ppt_reminder",
+      "schedule": "Daily 12:30 pm WET"
+    },
+    "re_entry": true,
+    "goal": "so_pptbr_exit",
+    "steps": [
+      {
+        "id": "so_pptbr_email1",
+        "name": "Email 1 — PPT Tomorrow",
+        "type": "email",
+        "config": {
+          "email_name": "SO_PPT_Booked_Franchisee_Email_2"
+        },
+        "next": "so_pptbr_wait1"
+      },
+      {
+        "id": "so_pptbr_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "so_pptbr_exit"
+      },
+      {
+        "id": "so_pptbr_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "no_new_student",
+    "name": "New Student — North",
+    "description": "2-email nurture for new leads. North version (simpler than South — 1 status check).",
+    "business_unit_id": "bu_north",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "no_demo_new",
+      "schedule": "Hourly 11:00 am HQ time"
+    },
+    "re_entry": false,
+    "goal": "no_ns_exit",
+    "steps": [
+      {
+        "id": "no_ns_email1",
+        "name": "Email 1 — Welcome",
+        "type": "email",
+        "config": {
+          "email_name": "HR_New_Email_1"
+        },
+        "next": "no_ns_wait1"
+      },
+      {
+        "id": "no_ns_wait1",
+        "name": "Wait 2 Days",
+        "type": "wait",
+        "config": {
+          "duration": 2,
+          "unit": "days"
+        },
+        "next": "no_ns_check1"
+      },
+      {
+        "id": "no_ns_check1",
+        "name": "Still New?",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "New"
+          }
+        },
+        "next": {
+          "yes": "no_ns_email2",
+          "no": "no_ns_wait_exit"
+        }
+      },
+      {
+        "id": "no_ns_email2",
+        "name": "Email 2 — Follow-up",
+        "type": "email",
+        "config": {
+          "email_name": "HR_New_Email_2"
+        },
+        "next": "no_ns_wait_exit"
+      },
+      {
+        "id": "no_ns_wait_exit",
+        "name": "Wait 3 Min",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "minutes"
+        },
+        "next": "no_ns_exit"
+      },
+      {
+        "id": "no_ns_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "no_fuc_student",
+    "name": "Follow Up Call — Student (North)",
+    "description": "Reminder email day before the follow-up call. Re-entry allowed.",
+    "business_unit_id": "bu_north",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "no_demo_fuc",
+      "schedule": "Hourly every 4 hours 10:00 am CET"
+    },
+    "re_entry": true,
+    "goal": "no_fuc_s_exit",
+    "steps": [
+      {
+        "id": "no_fuc_s_email1",
+        "name": "Email 1 — Call Tomorrow",
+        "type": "email",
+        "config": {
+          "email_name": "HR_Follow_Up_Call_Email_1"
+        },
+        "next": "no_fuc_s_wait1"
+      },
+      {
+        "id": "no_fuc_s_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "no_fuc_s_exit"
+      },
+      {
+        "id": "no_fuc_s_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "no_pending_demo",
+    "name": "Pending Demo — North",
+    "description": "Confirmation email on demo sign-up.",
+    "business_unit_id": "bu_north",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "no_demo_pending_demo",
+      "schedule": "Minutely after automation"
+    },
+    "re_entry": false,
+    "goal": "no_pd_exit",
+    "steps": [
+      {
+        "id": "no_pd_email1",
+        "name": "Email 1 — Demo Confirmation",
+        "type": "email",
+        "config": {
+          "email_name": "HR_Pending_Demo_Email_1"
+        },
+        "next": "no_pd_wait1"
+      },
+      {
+        "id": "no_pd_wait1",
+        "name": "Wait 3 Min",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "minutes"
+        },
+        "next": "no_pd_exit"
+      },
+      {
+        "id": "no_pd_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "no_pending_reminder",
+    "name": "Pending Reminder — North",
+    "description": "Day-before demo reminder. Re-entry allowed.",
+    "business_unit_id": "bu_north",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "no_demo_pending_reminder",
+      "schedule": "Daily 11:00 AM CET"
+    },
+    "re_entry": true,
+    "goal": "no_pr_exit",
+    "steps": [
+      {
+        "id": "no_pr_email1",
+        "name": "Email 1 — Demo Tomorrow",
+        "type": "email",
+        "config": {
+          "email_name": "HR_Pending_Demo_Email_2"
+        },
+        "next": "no_pr_wait1"
+      },
+      {
+        "id": "no_pr_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "no_pr_exit"
+      },
+      {
+        "id": "no_pr_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "no_show_demo",
+    "name": "Show Demo — North",
+    "description": "Single post-demo email for attended contacts.",
+    "business_unit_id": "bu_north",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "no_demo_show_demo",
+      "schedule": "Daily 4:00 pm CET"
+    },
+    "re_entry": false,
+    "goal": "no_sd_exit",
+    "steps": [
+      {
+        "id": "no_sd_email1",
+        "name": "Email 1 — Post Demo",
+        "type": "email",
+        "config": {
+          "email_name": "HR_Show_Demo_Email_1"
+        },
+        "next": "no_sd_wait1"
+      },
+      {
+        "id": "no_sd_wait1",
+        "name": "Wait 3 Min",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "minutes"
+        },
+        "next": "no_sd_exit"
+      },
+      {
+        "id": "no_sd_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "no_no_show_demo",
+    "name": "Not Show Demo — North",
+    "description": "Single email + 8-day wait for contacts who didn't attend. Re-entry allowed.",
+    "business_unit_id": "bu_north",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "no_demo_no_show",
+      "schedule": "Daily 12:00 pm CET"
+    },
+    "re_entry": true,
+    "goal": "no_nsd_exit",
+    "steps": [
+      {
+        "id": "no_nsd_email1",
+        "name": "Email 1 — Missed Demo",
+        "type": "email",
+        "config": {
+          "email_name": "HR_New_Email_5"
+        },
+        "next": "no_nsd_wait1"
+      },
+      {
+        "id": "no_nsd_wait1",
+        "name": "Wait 8 Days",
+        "type": "wait",
+        "config": {
+          "duration": 8,
+          "unit": "days"
+        },
+        "next": "no_nsd_exit"
+      },
+      {
+        "id": "no_nsd_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "no_new_franchisee",
+    "name": "New Franchisee — North",
+    "description": "Single welcome email for new franchisee leads.",
+    "business_unit_id": "bu_north",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "no_fr_new",
+      "schedule": "Hourly 11:00 am WET"
+    },
+    "re_entry": false,
+    "goal": "no_nf_exit",
+    "steps": [
+      {
+        "id": "no_nf_email1",
+        "name": "Email 1 — Welcome Franchisee",
+        "type": "email",
+        "config": {
+          "email_name": "HR_New_Franchisee_Email_1"
+        },
+        "next": "no_nf_wait1"
+      },
+      {
+        "id": "no_nf_wait1",
+        "name": "Wait 3 Min",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "minutes"
+        },
+        "next": "no_nf_exit"
+      },
+      {
+        "id": "no_nf_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "no_fuc_franchisee",
+    "name": "Follow Up Call — Franchisee (North)",
+    "description": "Reminder email day before the franchisee follow-up call. Re-entry allowed.",
+    "business_unit_id": "bu_north",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "no_fr_fuc",
+      "schedule": "Daily 12:30 am WET"
+    },
+    "re_entry": true,
+    "goal": "no_fuf_exit",
+    "steps": [
+      {
+        "id": "no_fuf_email1",
+        "name": "Email 1 — Call Tomorrow",
+        "type": "email",
+        "config": {
+          "email_name": "HR_Follow_Up_Call_Franchisee_Email_1"
+        },
+        "next": "no_fuf_wait1"
+      },
+      {
+        "id": "no_fuf_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "no_fuf_exit"
+      },
+      {
+        "id": "no_fuf_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "no_nda_franchisee",
+    "name": "NDA Franchisee — North",
+    "description": "2-email NDA nurture. Checks Status=NDA after first email.",
+    "business_unit_id": "bu_north",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "no_fr_nda",
+      "schedule": "Daily 11:00 AM CET"
+    },
+    "re_entry": false,
+    "goal": "no_nda_exit",
+    "steps": [
+      {
+        "id": "no_nda_email1",
+        "name": "Email 1 — NDA Info",
+        "type": "email",
+        "config": {
+          "email_name": "HR_NDA_Franchisee_Email_1"
+        },
+        "next": "no_nda_wait1"
+      },
+      {
+        "id": "no_nda_wait1",
+        "name": "Wait 2 Days",
+        "type": "wait",
+        "config": {
+          "duration": 2,
+          "unit": "days"
+        },
+        "next": "no_nda_check1"
+      },
+      {
+        "id": "no_nda_check1",
+        "name": "Still NDA Status?",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "NDA"
+          }
+        },
+        "next": {
+          "yes": "no_nda_email2",
+          "no": "no_nda_exit"
+        }
+      },
+      {
+        "id": "no_nda_email2",
+        "name": "Email 2 — NDA Reminder",
+        "type": "email",
+        "config": {
+          "email_name": "HR_NDA_Franchisee_Email_2"
+        },
+        "next": "no_nda_wait2"
+      },
+      {
+        "id": "no_nda_wait2",
+        "name": "Wait 3 Min",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "minutes"
+        },
+        "next": "no_nda_exit"
+      },
+      {
+        "id": "no_nda_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "no_nda_signed_franchisee",
+    "name": "NDA Signed Franchisee — North",
+    "description": "3-email NDA Signed nurture with 3 status checks. More complex than South version.",
+    "business_unit_id": "bu_north",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "no_fr_nda_signed",
+      "schedule": "Hourly 11:00 am WET"
+    },
+    "re_entry": false,
+    "goal": "no_ndas_exit",
+    "steps": [
+      {
+        "id": "no_ndas_email1",
+        "name": "Email 1 — NDA Signed",
+        "type": "email",
+        "config": {
+          "email_name": "HR_NDA_Signed_Franchisee_Email_1"
+        },
+        "next": "no_ndas_wait1"
+      },
+      {
+        "id": "no_ndas_wait1",
+        "name": "Wait 2 Days",
+        "type": "wait",
+        "config": {
+          "duration": 2,
+          "unit": "days"
+        },
+        "next": "no_ndas_check1"
+      },
+      {
+        "id": "no_ndas_check1",
+        "name": "Still NDA Signed? (Check 1)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "NDA Signed"
+          }
+        },
+        "next": {
+          "yes": "no_ndas_email2",
+          "no": "no_ndas_exit"
+        }
+      },
+      {
+        "id": "no_ndas_email2",
+        "name": "Email 2",
+        "type": "email",
+        "config": {
+          "email_name": "HR_NDA_Signed_Franchisee_Email_2"
+        },
+        "next": "no_ndas_wait2"
+      },
+      {
+        "id": "no_ndas_wait2",
+        "name": "Wait 2 Days",
+        "type": "wait",
+        "config": {
+          "duration": 2,
+          "unit": "days"
+        },
+        "next": "no_ndas_check2"
+      },
+      {
+        "id": "no_ndas_check2",
+        "name": "Still NDA Signed? (Check 2)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "NDA Signed"
+          }
+        },
+        "next": {
+          "yes": "no_ndas_email3",
+          "no": "no_ndas_exit"
+        }
+      },
+      {
+        "id": "no_ndas_email3",
+        "name": "Email 3 — Final",
+        "type": "email",
+        "config": {
+          "email_name": "HR_NDA_Signed_Franchisee_Email_3"
+        },
+        "next": "no_ndas_wait3"
+      },
+      {
+        "id": "no_ndas_wait3",
+        "name": "Wait 4 Days",
+        "type": "wait",
+        "config": {
+          "duration": 4,
+          "unit": "days"
+        },
+        "next": "no_ndas_check3"
+      },
+      {
+        "id": "no_ndas_check3",
+        "name": "Still NDA Signed? (Check 3)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "NDA Signed"
+          }
+        },
+        "next": {
+          "yes": "no_ndas_wait_exit",
+          "no": "no_ndas_exit"
+        }
+      },
+      {
+        "id": "no_ndas_wait_exit",
+        "name": "Wait 3 Min",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "minutes"
+        },
+        "next": "no_ndas_exit"
+      },
+      {
+        "id": "no_ndas_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "no_prospect_franchisee",
+    "name": "Prospect Franchisee — North",
+    "description": "Confirmation email when a prospect meeting is booked. No re-entry.",
+    "business_unit_id": "bu_north",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "no_fr_prospect",
+      "schedule": "Daily 12:00 pm CET"
+    },
+    "re_entry": false,
+    "goal": "no_pf_exit",
+    "steps": [
+      {
+        "id": "no_pf_email1",
+        "name": "Email 1 — Meeting Confirmed",
+        "type": "email",
+        "config": {
+          "email_name": "HR_Prospect_Franchisee_Email_1"
+        },
+        "next": "no_pf_wait1"
+      },
+      {
+        "id": "no_pf_wait1",
+        "name": "Wait 3 Min",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "minutes"
+        },
+        "next": "no_pf_exit"
+      },
+      {
+        "id": "no_pf_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "no_prospect_reminder_franchisee",
+    "name": "Prospect Reminder Franchisee — North",
+    "description": "Day-before reminder for the prospect meeting. Re-entry allowed.",
+    "business_unit_id": "bu_north",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "no_fr_prospect_reminder",
+      "schedule": "Daily 12:00 pm CET"
+    },
+    "re_entry": true,
+    "goal": "no_pfr_exit",
+    "steps": [
+      {
+        "id": "no_pfr_email1",
+        "name": "Email 1 — Meeting Tomorrow",
+        "type": "email",
+        "config": {
+          "email_name": "HR_Prospect_Franchisee_Email_2"
+        },
+        "next": "no_pfr_wait1"
+      },
+      {
+        "id": "no_pfr_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "no_pfr_exit"
+      },
+      {
+        "id": "no_pfr_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "no_ppt_booked_franchisee",
+    "name": "PPT Booked Franchisee — North",
+    "description": "Confirmation email when PPT meeting is booked. No re-entry.",
+    "business_unit_id": "bu_north",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "no_fr_ppt_booked",
+      "schedule": "Daily 1:00 pm WET"
+    },
+    "re_entry": false,
+    "goal": "no_pptb_exit",
+    "steps": [
+      {
+        "id": "no_pptb_email1",
+        "name": "Email 1 — PPT Confirmed",
+        "type": "email",
+        "config": {
+          "email_name": "HR_PPT_Booked_Franchisee_Email_1"
+        },
+        "next": "no_pptb_wait1"
+      },
+      {
+        "id": "no_pptb_wait1",
+        "name": "Wait 3 Min",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "minutes"
+        },
+        "next": "no_pptb_exit"
+      },
+      {
+        "id": "no_pptb_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "no_ppt_reminder_franchisee",
+    "name": "PPT Booked Reminder Franchisee — North",
+    "description": "Day-before reminder for the PPT meeting. Re-entry allowed.",
+    "business_unit_id": "bu_north",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "no_fr_ppt_reminder",
+      "schedule": "Daily 1:00 pm WET"
+    },
+    "re_entry": true,
+    "goal": "no_pptbr_exit",
+    "steps": [
+      {
+        "id": "no_pptbr_email1",
+        "name": "Email 1 — PPT Tomorrow",
+        "type": "email",
+        "config": {
+          "email_name": "HR_PPT_Booked_Franchisee_Email_2"
+        },
+        "next": "no_pptbr_wait1"
+      },
+      {
+        "id": "no_pptbr_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "no_pptbr_exit"
+      },
+      {
+        "id": "no_pptbr_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "ea_new_student",
+    "name": "New Student — East",
+    "description": "Same logic as South New Student (5 emails, 3 status checks). Status: Draft - Ready to Activate.",
+    "business_unit_id": "bu_east",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "ea_demo_new",
+      "schedule": "Hourly (same as South)"
+    },
+    "re_entry": false,
+    "goal": "ea_ns_exit",
+    "steps": [
+      {
+        "id": "ea_ns_email1",
+        "name": "Email 1 — Welcome",
+        "type": "email",
+        "config": {
+          "email_name": "EA_New_Email_1"
+        },
+        "next": "ea_ns_wait1"
+      },
+      {
+        "id": "ea_ns_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "ea_ns_email2"
+      },
+      {
+        "id": "ea_ns_email2",
+        "name": "Email 2",
+        "type": "email",
+        "config": {
+          "email_name": "EA_New_Email_2"
+        },
+        "next": "ea_ns_check1"
+      },
+      {
+        "id": "ea_ns_check1",
+        "name": "Still New? (Check 1)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "New"
+          }
+        },
+        "next": {
+          "yes": "ea_ns_wait2",
+          "no": "ea_ns_exit"
+        }
+      },
+      {
+        "id": "ea_ns_wait2",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "ea_ns_email3"
+      },
+      {
+        "id": "ea_ns_email3",
+        "name": "Email 3",
+        "type": "email",
+        "config": {
+          "email_name": "EA_New_Email_3"
+        },
+        "next": "ea_ns_wait3"
+      },
+      {
+        "id": "ea_ns_wait3",
+        "name": "Wait 2 Days",
+        "type": "wait",
+        "config": {
+          "duration": 2,
+          "unit": "days"
+        },
+        "next": "ea_ns_check2"
+      },
+      {
+        "id": "ea_ns_check2",
+        "name": "Still New? (Check 2)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "New"
+          }
+        },
+        "next": {
+          "yes": "ea_ns_email4",
+          "no": "ea_ns_exit"
+        }
+      },
+      {
+        "id": "ea_ns_email4",
+        "name": "Email 4",
+        "type": "email",
+        "config": {
+          "email_name": "EA_New_Email_4"
+        },
+        "next": "ea_ns_wait4"
+      },
+      {
+        "id": "ea_ns_wait4",
+        "name": "Wait 4 Days",
+        "type": "wait",
+        "config": {
+          "duration": 4,
+          "unit": "days"
+        },
+        "next": "ea_ns_check3"
+      },
+      {
+        "id": "ea_ns_check3",
+        "name": "Still New? (Check 3)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "New"
+          }
+        },
+        "next": {
+          "yes": "ea_ns_email5",
+          "no": "ea_ns_exit"
+        }
+      },
+      {
+        "id": "ea_ns_email5",
+        "name": "Email 5 — Final",
+        "type": "email",
+        "config": {
+          "email_name": "EA_New_Email_5"
+        },
+        "next": "ea_ns_wait5"
+      },
+      {
+        "id": "ea_ns_wait5",
+        "name": "Wait 2 Min",
+        "type": "wait",
+        "config": {
+          "duration": 2,
+          "unit": "minutes"
+        },
+        "next": "ea_ns_exit"
+      },
+      {
+        "id": "ea_ns_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "ea_fuc_student",
+    "name": "Follow Up Call — Student (East)",
+    "description": "Same as South. Re-entry allowed.",
+    "business_unit_id": "bu_east",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "ea_demo_fuc"
+    },
+    "re_entry": true,
+    "goal": "ea_fucs_exit",
+    "steps": [
+      {
+        "id": "ea_fucs_email1",
+        "name": "Email 1",
+        "type": "email",
+        "config": {
+          "email_name": "EA_Follow_Up_Call_Email_1"
+        },
+        "next": "ea_fucs_wait1"
+      },
+      {
+        "id": "ea_fucs_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "ea_fucs_exit"
+      },
+      {
+        "id": "ea_fucs_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "ea_pending_demo",
+    "name": "Pending Demo — East",
+    "description": "Same as South.",
+    "business_unit_id": "bu_east",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "ea_demo_pending_demo"
+    },
+    "re_entry": false,
+    "goal": "ea_pd_exit",
+    "steps": [
+      {
+        "id": "ea_pd_email1",
+        "name": "Email 1 — Demo Confirmation",
+        "type": "email",
+        "config": {
+          "email_name": "EA_Pending_Demo_Email_1"
+        },
+        "next": "ea_pd_wait1"
+      },
+      {
+        "id": "ea_pd_wait1",
+        "name": "Wait 3 Min",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "minutes"
+        },
+        "next": "ea_pd_exit"
+      },
+      {
+        "id": "ea_pd_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "ea_pending_reminder",
+    "name": "Pending Reminder Demo — East",
+    "description": "Same as South. Re-entry allowed.",
+    "business_unit_id": "bu_east",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "ea_demo_pending_reminder"
+    },
+    "re_entry": true,
+    "goal": "ea_pr_exit",
+    "steps": [
+      {
+        "id": "ea_pr_email1",
+        "name": "Email 1 — Demo Tomorrow",
+        "type": "email",
+        "config": {
+          "email_name": "EA_Pending_Reminder_Email_1"
+        },
+        "next": "ea_pr_wait1"
+      },
+      {
+        "id": "ea_pr_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "ea_pr_exit"
+      },
+      {
+        "id": "ea_pr_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "ea_show_demo",
+    "name": "Show Demo (Attended) — East",
+    "description": "Same 4-email logic as South. Status: Draft - Ready to Activate.",
+    "business_unit_id": "bu_east",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "ea_demo_show_demo"
+    },
+    "re_entry": false,
+    "goal": "ea_sd_exit",
+    "steps": [
+      {
+        "id": "ea_sd_email1",
+        "name": "Email 1",
+        "type": "email",
+        "config": {
+          "email_name": "EA_Show_Demo_Email_1"
+        },
+        "next": "ea_sd_wait1"
+      },
+      {
+        "id": "ea_sd_wait1",
+        "name": "Wait 2 Days",
+        "type": "wait",
+        "config": {
+          "duration": 2,
+          "unit": "days"
+        },
+        "next": "ea_sd_check1"
+      },
+      {
+        "id": "ea_sd_check1",
+        "name": "Still Done Demo? (Check 1)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status_in_LG",
+            "operator": "equals",
+            "value": "Done Demo"
+          }
+        },
+        "next": {
+          "yes": "ea_sd_email2",
+          "no": "ea_sd_exit"
+        }
+      },
+      {
+        "id": "ea_sd_email2",
+        "name": "Email 2",
+        "type": "email",
+        "config": {
+          "email_name": "EA_Show_Demo_Email_2"
+        },
+        "next": "ea_sd_wait2"
+      },
+      {
+        "id": "ea_sd_wait2",
+        "name": "Wait 3 Days",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "days"
+        },
+        "next": "ea_sd_check2"
+      },
+      {
+        "id": "ea_sd_check2",
+        "name": "Still Done Demo? (Check 2)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status_in_LG",
+            "operator": "equals",
+            "value": "Done Demo"
+          }
+        },
+        "next": {
+          "yes": "ea_sd_email3",
+          "no": "ea_sd_exit"
+        }
+      },
+      {
+        "id": "ea_sd_email3",
+        "name": "Email 3",
+        "type": "email",
+        "config": {
+          "email_name": "EA_Show_Demo_Email_3"
+        },
+        "next": "ea_sd_wait3"
+      },
+      {
+        "id": "ea_sd_wait3",
+        "name": "Wait 3 Days",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "days"
+        },
+        "next": "ea_sd_check3"
+      },
+      {
+        "id": "ea_sd_check3",
+        "name": "Still Done Demo? (Check 3)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status_in_LG",
+            "operator": "equals",
+            "value": "Done Demo"
+          }
+        },
+        "next": {
+          "yes": "ea_sd_email4",
+          "no": "ea_sd_exit"
+        }
+      },
+      {
+        "id": "ea_sd_email4",
+        "name": "Email 4 — Final",
+        "type": "email",
+        "config": {
+          "email_name": "EA_Show_Demo_Email_4"
+        },
+        "next": "ea_sd_wait4"
+      },
+      {
+        "id": "ea_sd_wait4",
+        "name": "Wait 3 Min",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "minutes"
+        },
+        "next": "ea_sd_exit"
+      },
+      {
+        "id": "ea_sd_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "ea_no_show_demo",
+    "name": "Not Show Demo — East",
+    "description": "Same as South. Re-entry allowed.",
+    "business_unit_id": "bu_east",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "ea_demo_no_show"
+    },
+    "re_entry": true,
+    "goal": "ea_nsd_exit",
+    "steps": [
+      {
+        "id": "ea_nsd_email1",
+        "name": "Email 1 — Missed Demo",
+        "type": "email",
+        "config": {
+          "email_name": "EA_Not_Show_Demo_Email_1"
+        },
+        "next": "ea_nsd_wait1"
+      },
+      {
+        "id": "ea_nsd_wait1",
+        "name": "Wait 8 Days",
+        "type": "wait",
+        "config": {
+          "duration": 8,
+          "unit": "days"
+        },
+        "next": "ea_nsd_exit"
+      },
+      {
+        "id": "ea_nsd_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "ea_new_franchisee",
+    "name": "New Franchisee — East",
+    "description": "Same as South (3 emails, 2 status checks). Status: Draft - Ready to Activate.",
+    "business_unit_id": "bu_east",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "ea_fr_new"
+    },
+    "re_entry": false,
+    "goal": "ea_nf_exit",
+    "steps": [
+      {
+        "id": "ea_nf_email1",
+        "name": "Email 1",
+        "type": "email",
+        "config": {
+          "email_name": "EA_New_Franchisee_Email_1"
+        },
+        "next": "ea_nf_wait1"
+      },
+      {
+        "id": "ea_nf_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "ea_nf_check1"
+      },
+      {
+        "id": "ea_nf_check1",
+        "name": "Still New? (1)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "New"
+          }
+        },
+        "next": {
+          "yes": "ea_nf_email2",
+          "no": "ea_nf_exit"
+        }
+      },
+      {
+        "id": "ea_nf_email2",
+        "name": "Email 2",
+        "type": "email",
+        "config": {
+          "email_name": "EA_New_Franchisee_Email_2"
+        },
+        "next": "ea_nf_wait2"
+      },
+      {
+        "id": "ea_nf_wait2",
+        "name": "Wait 2 Days",
+        "type": "wait",
+        "config": {
+          "duration": 2,
+          "unit": "days"
+        },
+        "next": "ea_nf_check2"
+      },
+      {
+        "id": "ea_nf_check2",
+        "name": "Still New? (2)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "New"
+          }
+        },
+        "next": {
+          "yes": "ea_nf_email3",
+          "no": "ea_nf_exit"
+        }
+      },
+      {
+        "id": "ea_nf_email3",
+        "name": "Email 3 — Final",
+        "type": "email",
+        "config": {
+          "email_name": "EA_New_Franchisee_Email_3"
+        },
+        "next": "ea_nf_exit"
+      },
+      {
+        "id": "ea_nf_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "ea_fuc_franchisee",
+    "name": "Follow Up Call — Franchisee (East)",
+    "description": "Same as South.",
+    "business_unit_id": "bu_east",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "ea_fr_fuc"
+    },
+    "re_entry": true,
+    "goal": "ea_fuf_exit",
+    "steps": [
+      {
+        "id": "ea_fuf_email1",
+        "name": "Email 1",
+        "type": "email",
+        "config": {
+          "email_name": "EA_Follow_Up_Call_Franchisee_Email_1"
+        },
+        "next": "ea_fuf_wait1"
+      },
+      {
+        "id": "ea_fuf_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "ea_fuf_exit"
+      },
+      {
+        "id": "ea_fuf_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "ea_nda_signed_franchisee",
+    "name": "NDA Signed Franchisee — East",
+    "description": "Same 3-email + 3-check logic as South. Status: Draft - Ready to Activate.",
+    "business_unit_id": "bu_east",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "ea_fr_nda_signed"
+    },
+    "re_entry": false,
+    "goal": "ea_ndas_exit",
+    "steps": [
+      {
+        "id": "ea_ndas_email1",
+        "name": "Email 1",
+        "type": "email",
+        "config": {
+          "email_name": "EA_NDA_Signed_Franchisee_Email_1"
+        },
+        "next": "ea_ndas_wait1"
+      },
+      {
+        "id": "ea_ndas_wait1",
+        "name": "Wait 2 Days",
+        "type": "wait",
+        "config": {
+          "duration": 2,
+          "unit": "days"
+        },
+        "next": "ea_ndas_check1"
+      },
+      {
+        "id": "ea_ndas_check1",
+        "name": "Still NDA Signed? (1)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "NDA Signed"
+          }
+        },
+        "next": {
+          "yes": "ea_ndas_email2",
+          "no": "ea_ndas_exit"
+        }
+      },
+      {
+        "id": "ea_ndas_email2",
+        "name": "Email 2",
+        "type": "email",
+        "config": {
+          "email_name": "EA_NDA_Signed_Franchisee_Email_2"
+        },
+        "next": "ea_ndas_wait2"
+      },
+      {
+        "id": "ea_ndas_wait2",
+        "name": "Wait 2 Days",
+        "type": "wait",
+        "config": {
+          "duration": 2,
+          "unit": "days"
+        },
+        "next": "ea_ndas_check2"
+      },
+      {
+        "id": "ea_ndas_check2",
+        "name": "Still NDA Signed? (2)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "NDA Signed"
+          }
+        },
+        "next": {
+          "yes": "ea_ndas_email3",
+          "no": "ea_ndas_exit"
+        }
+      },
+      {
+        "id": "ea_ndas_email3",
+        "name": "Email 3 — Final",
+        "type": "email",
+        "config": {
+          "email_name": "EA_NDA_Signed_Franchisee_Email_3"
+        },
+        "next": "ea_ndas_wait3"
+      },
+      {
+        "id": "ea_ndas_wait3",
+        "name": "Wait 4 Days",
+        "type": "wait",
+        "config": {
+          "duration": 4,
+          "unit": "days"
+        },
+        "next": "ea_ndas_check3"
+      },
+      {
+        "id": "ea_ndas_check3",
+        "name": "Still NDA Signed? (3)",
+        "type": "decision_split",
+        "config": {
+          "condition": {
+            "field": "Status",
+            "operator": "equals",
+            "value": "NDA Signed"
+          }
+        },
+        "next": {
+          "yes": "ea_ndas_wait_exit",
+          "no": "ea_ndas_exit"
+        }
+      },
+      {
+        "id": "ea_ndas_wait_exit",
+        "name": "Wait 3 Min",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "minutes"
+        },
+        "next": "ea_ndas_exit"
+      },
+      {
+        "id": "ea_ndas_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "ea_ppt_booked_franchisee",
+    "name": "PPT Booked Franchisee — East",
+    "description": "Same as South.",
+    "business_unit_id": "bu_east",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "ea_fr_ppt_booked"
+    },
+    "re_entry": false,
+    "goal": "ea_pptb_exit",
+    "steps": [
+      {
+        "id": "ea_pptb_email1",
+        "name": "Email 1 — PPT Confirmed",
+        "type": "email",
+        "config": {
+          "email_name": "EA_PPT_Booked_Franchisee_Email_1"
+        },
+        "next": "ea_pptb_wait1"
+      },
+      {
+        "id": "ea_pptb_wait1",
+        "name": "Wait 3 Min",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "minutes"
+        },
+        "next": "ea_pptb_exit"
+      },
+      {
+        "id": "ea_pptb_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "ea_ppt_reminder_franchisee",
+    "name": "PPT Booked Reminder Franchisee — East",
+    "description": "Same as South. Re-entry.",
+    "business_unit_id": "bu_east",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "ea_fr_ppt_reminder"
+    },
+    "re_entry": true,
+    "goal": "ea_pptbr_exit",
+    "steps": [
+      {
+        "id": "ea_pptbr_email1",
+        "name": "Email 1 — PPT Tomorrow",
+        "type": "email",
+        "config": {
+          "email_name": "EA_PPT_Booked_Franchisee_Email_2"
+        },
+        "next": "ea_pptbr_wait1"
+      },
+      {
+        "id": "ea_pptbr_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "ea_pptbr_exit"
+      },
+      {
+        "id": "ea_pptbr_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "ea_prospect_franchisee",
+    "name": "Prospect Franchisee — East",
+    "description": "Confirmation when meeting booked.",
+    "business_unit_id": "bu_east",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "ea_fr_prospect"
+    },
+    "re_entry": false,
+    "goal": "ea_pf_exit",
+    "steps": [
+      {
+        "id": "ea_pf_email1",
+        "name": "Email 1 — Meeting Confirmed",
+        "type": "email",
+        "config": {
+          "email_name": "EA_Prospect_Franchisee_Email_1"
+        },
+        "next": "ea_pf_wait1"
+      },
+      {
+        "id": "ea_pf_wait1",
+        "name": "Wait 3 Min",
+        "type": "wait",
+        "config": {
+          "duration": 3,
+          "unit": "minutes"
+        },
+        "next": "ea_pf_exit"
+      },
+      {
+        "id": "ea_pf_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  },
+  {
+    "id": "ea_prospect_reminder_franchisee",
+    "name": "Prospect Reminder Franchisee — East",
+    "description": "Meeting tomorrow reminder. Re-entry.",
+    "business_unit_id": "bu_east",
+    "entry_source": {
+      "type": "DataExtension",
+      "de_key": "ea_fr_prospect_reminder"
+    },
+    "re_entry": true,
+    "goal": "ea_pfr_exit",
+    "steps": [
+      {
+        "id": "ea_pfr_email1",
+        "name": "Email 1 — Meeting Tomorrow",
+        "type": "email",
+        "config": {
+          "email_name": "EA_Prospect_Franchisee_Email_2"
+        },
+        "next": "ea_pfr_wait1"
+      },
+      {
+        "id": "ea_pfr_wait1",
+        "name": "Wait 1 Day",
+        "type": "wait",
+        "config": {
+          "duration": 1,
+          "unit": "days"
+        },
+        "next": "ea_pfr_exit"
+      },
+      {
+        "id": "ea_pfr_exit",
+        "name": "Exit",
+        "type": "exit",
+        "config": {
+          "reason": "completed"
+        },
+        "next": null
+      }
+    ]
+  }
+]

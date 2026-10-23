@@ -1,0 +1,262 @@
+[
+  {
+    "id": "p_so_new_lead",
+    "name": "Giulia — New South Student Lead",
+    "attributes": {
+      "ContactKey": "0031t00000TEST001",
+      "EmailAddress": "giulia.test@test.example.com",
+      "FirstName": "Giulia",
+      "LastName": "Rossi",
+      "Record_Type": "Student",
+      "Student_Type": "Lead",
+      "Status": "New",
+      "Status_in_LG": null,
+      "Demo_Date": null,
+      "FollowUpCallDate": null,
+      "CalMeetingDate": null,
+      "CalPPTDate": null,
+      "CalName": null,
+      "Region": "South"
+    }
+  },
+  {
+    "id": "p_so_new_lead_progresses",
+    "name": "Marco — New Lead Who Progresses to Pending Demo",
+    "attributes": {
+      "ContactKey": "0031t00000TEST002",
+      "EmailAddress": "marco.test@test.example.com",
+      "FirstName": "Marco",
+      "LastName": "Ferrari",
+      "Record_Type": "Student",
+      "Student_Type": "Lead",
+      "Status": "New",
+      "Status_in_LG": null,
+      "Demo_Date": null,
+      "FollowUpCallDate": null,
+      "CalMeetingDate": null,
+      "CalPPTDate": null,
+      "CalName": null,
+      "Region": "South"
+    }
+  },
+  {
+    "id": "p_so_pending_reminder",
+    "name": "Sofia — Pending Demo Reminder (South)",
+    "attributes": {
+      "ContactKey": "0031t00000TEST003",
+      "EmailAddress": "sofia.test@test.example.com",
+      "FirstName": "Sofia",
+      "LastName": "Bianchi",
+      "Record_Type": "Student",
+      "Student_Type": "Lead",
+      "Status": "Pending Demo",
+      "Status_in_LG": null,
+      "Demo_Date": "2026-03-19",
+      "FollowUpCallDate": null,
+      "CalMeetingDate": null,
+      "CalPPTDate": null,
+      "CalName": null,
+      "Region": "South"
+    }
+  },
+  {
+    "id": "p_so_show_demo",
+    "name": "Luca — Attended Demo, Now Being Nurtured (South)",
+    "attributes": {
+      "ContactKey": "0031t00000TEST004",
+      "EmailAddress": "luca.test@test.example.com",
+      "FirstName": "Luca",
+      "LastName": "Conti",
+      "Record_Type": "Student",
+      "Student_Type": "Contact",
+      "Status": "Follow Up Call",
+      "Status_in_LG": "Done Demo",
+      "Demo_Date": "2026-03-10",
+      "FollowUpCallDate": null,
+      "CalMeetingDate": null,
+      "CalPPTDate": null,
+      "CalName": null,
+      "Region": "South"
+    }
+  },
+  {
+    "id": "p_so_show_demo_converts",
+    "name": "Elena — Attended Demo, Converts Mid-Journey (South)",
+    "attributes": {
+      "ContactKey": "0031t00000TEST005",
+      "EmailAddress": "elena.test@test.example.com",
+      "FirstName": "Elena",
+      "LastName": "Ricci",
+      "Record_Type": "Student",
+      "Student_Type": "Contact",
+      "Status": "Follow Up Call",
+      "Status_in_LG": "Done Demo",
+      "Demo_Date": "2026-03-10",
+      "FollowUpCallDate": null,
+      "CalMeetingDate": null,
+      "CalPPTDate": null,
+      "CalName": null,
+      "Region": "South"
+    }
+  },
+  {
+    "id": "p_so_no_show",
+    "name": "Matteo — Did Not Attend Demo (South)",
+    "attributes": {
+      "ContactKey": "0031t00000TEST006",
+      "EmailAddress": "matteo.test@test.example.com",
+      "FirstName": "Matteo",
+      "LastName": "Lombardi",
+      "Record_Type": "Student",
+      "Student_Type": "Lead",
+      "Status": "No Show",
+      "Status_in_LG": null,
+      "Demo_Date": "2026-03-11",
+      "FollowUpCallDate": null,
+      "CalMeetingDate": null,
+      "CalPPTDate": null,
+      "CalName": null,
+      "Region": "South"
+    }
+  },
+  {
+    "id": "p_so_fuc_student",
+    "name": "Chiara — Follow Up Call Tomorrow, Student (South)",
+    "attributes": {
+      "ContactKey": "0031t00000TEST007",
+      "EmailAddress": "chiara.test@test.example.com",
+      "FirstName": "Chiara",
+      "LastName": "Moretti",
+      "Record_Type": "Student",
+      "Student_Type": "Lead",
+      "Status": "Follow Up Call",
+      "Status_in_LG": null,
+      "Demo_Date": null,
+      "FollowUpCallDate": "2026-03-19",
+      "CalMeetingDate": null,
+      "CalPPTDate": null,
+      "CalName": null,
+      "Region": "South"
+    }
+  },
+  {
+    "id": "p_so_new_franchisee",
+    "name": "Roberto — New Franchisee Lead (South)",
+    "attributes": {
+      "ContactKey": "0031t00000TEST008",
+      "EmailAddress": "roberto.test@test.example.com",
+      "FirstName": "Roberto",
+      "LastName": "Esposito",
+      "Record_Type": "Franchisee",
+      "Student_Type": "Lead",
+      "Status": "New",
+      "Status_in_LG": null,
+      "Demo_Date": null,
+      "FollowUpCallDate": null,
+      "CalMeetingDate": null,
+      "CalPPTDate": null,
+      "CalName": null,
+      "Region": "South"
+    }
+  },
+  {
+    "id": "p_so_nda_signed",
+    "name": "Francesca — NDA Signed Franchisee (South)",
+    "attributes": {
+      "ContactKey": "0031t00000TEST009",
+      "EmailAddress": "francesca.test@test.example.com",
+      "FirstName": "Francesca",
+      "LastName": "Gallo",
+      "Record_Type": "Franchisee",
+      "Student_Type": "Contact",
+      "Status": "NDA Signed",
+      "Status_in_LG": null,
+      "Demo_Date": null,
+      "FollowUpCallDate": null,
+      "CalMeetingDate": null,
+      "CalPPTDate": null,
+      "CalName": null,
+      "Region": "South"
+    }
+  },
+  {
+    "id": "p_so_ppt_booked",
+    "name": "Antonio — PPT Presentation Booked (South)",
+    "attributes": {
+      "ContactKey": "0031t00000TEST010",
+      "EmailAddress": "antonio.test@test.example.com",
+      "FirstName": "Antonio",
+      "LastName": "Russo",
+      "Record_Type": "Franchisee",
+      "Student_Type": "Contact",
+      "Status": "PPT Booked",
+      "Status_in_LG": null,
+      "Demo_Date": null,
+      "FollowUpCallDate": null,
+      "CalMeetingDate": null,
+      "CalPPTDate": "2026-03-20",
+      "CalName": null,
+      "Region": "South"
+    }
+  },
+  {
+    "id": "p_no_new_lead",
+    "name": "Ana — New North Student Lead",
+    "attributes": {
+      "ContactKey": "0031t00000TEST011",
+      "EmailAddress": "ana.test@test.example.com",
+      "FirstName": "Ana",
+      "LastName": "Horvat",
+      "Record_Type": "Student",
+      "Student_Type": "Lead",
+      "Status": "New",
+      "Status_in_LG": null,
+      "Demo_Date": null,
+      "FollowUpCallDate": null,
+      "CalMeetingDate": null,
+      "CalPPTDate": null,
+      "CalName": null,
+      "Region": "North"
+    }
+  },
+  {
+    "id": "p_no_nda_signed",
+    "name": "Ivan — NDA Signed Franchisee (North)",
+    "attributes": {
+      "ContactKey": "0031t00000TEST012",
+      "EmailAddress": "ivan.test@test.example.com",
+      "FirstName": "Ivan",
+      "LastName": "Kovač",
+      "Record_Type": "Franchisee",
+      "Student_Type": "Contact",
+      "Status": "NDA Signed",
+      "Status_in_LG": null,
+      "Demo_Date": null,
+      "FollowUpCallDate": null,
+      "CalMeetingDate": null,
+      "CalPPTDate": null,
+      "CalName": null,
+      "Region": "North"
+    }
+  },
+  {
+    "id": "p_ea_new_lead",
+    "name": "Maria — New East Student Lead",
+    "attributes": {
+      "ContactKey": "0031t00000TEST013",
+      "EmailAddress": "maria.test@test.example.com",
+      "FirstName": "Maria",
+      "LastName": "Ionescu",
+      "Record_Type": "Student",
+      "Student_Type": "Lead",
+      "Status": "New",
+      "Status_in_LG": null,
+      "Demo_Date": null,
+      "FollowUpCallDate": null,
+      "CalMeetingDate": null,
+      "CalPPTDate": null,
+      "CalName": null,
+      "Region": "East"
+    }
+  }
+]

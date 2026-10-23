@@ -1,0 +1,173 @@
+[
+  {
+    "id": "sc_new_student_status_changes_early",
+    "name": "New Student — Status Changes to Pending Demo After Email 2",
+    "description": "Giulia enters the New Student journey as a new lead. After Email 2 is sent (while in Check 1), her status changes to 'Pending Demo' — she booked a demo lesson. The journey should exit early at Check 1 (Status ≠ New).",
+    "journey_id": "so_new_student",
+    "persona_id": "p_so_new_lead",
+    "initial_overrides": {},
+    "step_events": [
+      {
+        "at_step_id": "so_ns_check1",
+        "description": "Salesforce updates Status to Pending Demo (lead booked a demo lesson between Email 2 and Check 1)",
+        "updates": {
+          "Status": "Pending Demo"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sc_new_student_status_changes_late",
+    "name": "New Student — Status Changes to Follow Up Call After Email 4",
+    "description": "Marco stays New through Check 1 and Check 2, receives Email 4. Before Check 3, his status changes to 'Follow Up Call' — a call was scheduled. Journey should exit early at Check 3.",
+    "journey_id": "so_new_student",
+    "persona_id": "p_so_new_lead_progresses",
+    "initial_overrides": {},
+    "step_events": [
+      {
+        "at_step_id": "so_ns_check3",
+        "description": "Salesforce updates Status to Follow Up Call (call was scheduled while lead was in the wait period)",
+        "updates": {
+          "Status": "Follow Up Call"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sc_new_student_completes_full",
+    "name": "New Student — Stays New All the Way Through (Full Journey)",
+    "description": "Giulia never progresses — stays Status=New through all 3 decision checks. Should receive all 5 emails and exit normally at the end.",
+    "journey_id": "so_new_student",
+    "persona_id": "p_so_new_lead",
+    "initial_overrides": {},
+    "step_events": []
+  },
+  {
+    "id": "sc_pending_reminder_demo_rescheduled",
+    "name": "Pending Reminder — Demo Date Rescheduled After Reminder Sent",
+    "description": "Sofia receives the day-before demo reminder email. Before the journey exits, her demo date is pushed to next week. The current journey run completes (exits). She will re-enter the Pending Reminder journey the new day before her rescheduled demo (re_entry=true).",
+    "journey_id": "so_pending_reminder",
+    "persona_id": "p_so_pending_reminder",
+    "initial_overrides": {},
+    "step_events": [
+      {
+        "at_step_id": "so_pr_wait1",
+        "description": "Demo date was rescheduled in Salesforce — Demo_Date updated while contact is in the final wait",
+        "updates": {
+          "Demo_Date": "2026-03-26"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sc_show_demo_converts_early",
+    "name": "Show Demo — Contact Converts (Status_in_LG Changes) After Email 2",
+    "description": "Elena attended the demo and is being nurtured. After Email 2 is sent, the sales team converts her in Salesforce — Status_in_LG changes away from 'Done Demo'. Check 2 should fire the NO branch and exit the journey early.",
+    "journey_id": "so_show_demo",
+    "persona_id": "p_so_show_demo_converts",
+    "initial_overrides": {},
+    "step_events": [
+      {
+        "at_step_id": "so_sd_check2",
+        "description": "Contact was enrolled — Status_in_LG updated in Salesforce (no longer 'Done Demo')",
+        "updates": {
+          "Status_in_LG": "Enrolled"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sc_show_demo_full_nurture",
+    "name": "Show Demo — Contact Never Converts (Full 4-Email Nurture)",
+    "description": "Luca attended the demo but does not convert. Status_in_LG stays 'Done Demo' through all 3 checks. He receives all 4 emails and exits at the end of the journey.",
+    "journey_id": "so_show_demo",
+    "persona_id": "p_so_show_demo",
+    "initial_overrides": {},
+    "step_events": []
+  },
+  {
+    "id": "sc_new_franchisee_progresses_at_check1",
+    "name": "New Franchisee — Status Changes to NDA Signed After Email 1",
+    "description": "Roberto enters as a new franchisee lead. After Email 1, his status is updated to 'NDA Signed' in Salesforce. Check 1 should fire the NO branch — Status ≠ New — and exit early. He will then enter the NDA Signed journey.",
+    "journey_id": "so_new_franchisee",
+    "persona_id": "p_so_new_franchisee",
+    "initial_overrides": {},
+    "step_events": [
+      {
+        "at_step_id": "so_nf_check1",
+        "description": "Franchisee signed the NDA during the wait period after Email 1",
+        "updates": {
+          "Status": "NDA Signed"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sc_nda_signed_progresses_to_ppt",
+    "name": "NDA Signed Franchisee — Status Changes to PPT Booked Mid-Nurture",
+    "description": "Francesca is in the NDA Signed journey. After Email 1, she books a PPT presentation — Status changes to 'PPT Booked' in Salesforce. The journey should detect Status ≠ NDA Signed at Check 1 and exit early. She will then enter the PPT Booked journey.",
+    "journey_id": "so_nda_signed",
+    "persona_id": "p_so_nda_signed",
+    "initial_overrides": {},
+    "step_events": [
+      {
+        "at_step_id": "so_ndas_check1",
+        "description": "Franchisee booked a PPT presentation — Status updated to PPT Booked in Salesforce",
+        "updates": {
+          "Status": "PPT Booked",
+          "CalPPTDate": "2026-03-22"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sc_no_nda_signed_completes_full",
+    "name": "North NDA Signed — Franchisee Never Progresses (Full 3-Email Run)",
+    "description": "Ivan is in the North NDA Signed journey. His status stays 'NDA Signed' through all 3 decision checks. He receives all 3 emails and exits normally.",
+    "journey_id": "no_nda_signed",
+    "persona_id": "p_no_nda_signed",
+    "initial_overrides": {},
+    "step_events": []
+  },
+  {
+    "id": "sc_no_nda_signed_progresses_mid",
+    "name": "North NDA Signed — Status Changes to Follow Up Call at Check 2",
+    "description": "Ivan receives Email 1 and Email 2. Between Check 2, his status changes to 'Follow Up Call'. The journey exits early at Check 2. Demonstrates that the North journey (3 checks) catches mid-journey progression later than the South version.",
+    "journey_id": "no_nda_signed",
+    "persona_id": "p_no_nda_signed",
+    "initial_overrides": {},
+    "step_events": [
+      {
+        "at_step_id": "no_ndas_check2",
+        "description": "Franchisee status updated to Follow Up Call in Salesforce",
+        "updates": {
+          "Status": "Follow Up Call"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sc_new_student_force_full_path_yes",
+    "name": "[Debug] New Student — Force All YES Branches (Stays New)",
+    "description": "Use _force_split to pin all 3 decision checks to YES — simulates a contact who never changes status, even if the field data is ambiguous. Useful for testing the complete email sequence.",
+    "journey_id": "so_new_student",
+    "persona_id": "p_so_new_lead",
+    "initial_overrides": {},
+    "step_events": [
+      { "at_step_id": "so_ns_check1", "description": "Force YES on Check 1", "updates": { "_force_split": "yes" } },
+      { "at_step_id": "so_ns_check2", "description": "Force YES on Check 2", "updates": { "_force_split": "yes" } },
+      { "at_step_id": "so_ns_check3", "description": "Force YES on Check 3", "updates": { "_force_split": "yes" } }
+    ]
+  },
+  {
+    "id": "sc_new_student_force_exit_check1",
+    "name": "[Debug] New Student — Force Exit at Check 1",
+    "description": "Pin Check 1 to NO — simulates a contact who progresses right after Email 2 regardless of field values. Useful for testing the early-exit path.",
+    "journey_id": "so_new_student",
+    "persona_id": "p_so_new_lead",
+    "initial_overrides": {},
+    "step_events": [
+      { "at_step_id": "so_ns_check1", "description": "Force NO on Check 1 (early exit)", "updates": { "_force_split": "no" } }
+    ]
+  }
+]

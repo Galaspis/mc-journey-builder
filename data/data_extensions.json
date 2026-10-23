@@ -1,0 +1,3313 @@
+[
+  {
+    "name": "Lead_Salesforce",
+    "key": "lead_salesforce",
+    "description": "Sync DE — Salesforce Lead object synced via SalesForce Connect.",
+    "business_unit_id": "bu_hq",
+    "entry_criteria": [],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "LastName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Region",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "City",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Phone",
+        "type": "Phone",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "LeadSource",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Student_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": "Lead"
+      },
+      {
+        "name": "Language",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "HasOptedOutOfEmail",
+        "type": "Boolean",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "FollowUpCallDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalMeetingDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalMeetingTime",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalMeetingLink",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalPPTDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalPPTTime",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalPPTLink",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CreatedDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Contact_Salesforce",
+    "key": "contact_salesforce",
+    "description": "Sync DE — Salesforce Contact object. Includes LG (Learning Group) student data.",
+    "business_unit_id": "bu_hq",
+    "entry_criteria": [],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "LastName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Region",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Phone",
+        "type": "Phone",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Student_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": "Contact"
+      },
+      {
+        "name": "Language",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status_in_LG",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Demo_Date",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Demo_Time",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "DateOfBirth",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "HasOptedOutOfEmail",
+        "type": "Boolean",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Demo_Subscribers",
+    "key": "demo_subscribers",
+    "description": "HQ DE combining Student Leads and Contacts built by Student_Leads and Student_Contacts SQL queries. Source for all region shared DEs.",
+    "business_unit_id": "bu_hq",
+    "entry_criteria": [],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "LastName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Region",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Phone",
+        "type": "Phone",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "LeadSource",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Student_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Language",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status_in_LG",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Demo_Date",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Demo_Time",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "FollowUpCallDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalMeetingDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalMeetingTime",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalMeetingLink",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalPPTDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalPPTTime",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "AccountName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "North_Subscribers_Shared",
+    "key": "no_subscribers_shared",
+    "description": "Shared DE in HQ — North subset of Demo_Subscribers. Source for North child BU segmentation.",
+    "business_unit_id": "bu_hq",
+    "entry_criteria": [
+      {
+        "field": "Region",
+        "operator": "equals",
+        "value": "North"
+      }
+    ],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "South_Subscribers_Shared",
+    "key": "so_subscribers_shared",
+    "description": "Shared DE in HQ — South subset of Demo_Subscribers.",
+    "business_unit_id": "bu_hq",
+    "entry_criteria": [
+      {
+        "field": "Region",
+        "operator": "equals",
+        "value": "South"
+      }
+    ],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "East_Subscribers_Shared",
+    "key": "ea_subscribers_shared",
+    "description": "Shared DE in HQ — East subset of Demo_Subscribers.",
+    "business_unit_id": "bu_hq",
+    "entry_criteria": [
+      {
+        "field": "Region",
+        "operator": "equals",
+        "value": "East"
+      }
+    ],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "North_All_Leads",
+    "key": "no_all_leads",
+    "description": "Built by North_All_Leads SQL query from North_Subscribers_Shared. Source for all North journey DEs.",
+    "business_unit_id": "bu_north",
+    "entry_criteria": [],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "Demo_Lesson_New (North)",
+    "key": "no_demo_new",
+    "description": "North — New demo lesson leads. Entry for Demo_Lesson_New journey.",
+    "business_unit_id": "bu_north",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "New"
+      },
+      {
+        "field": "Student_Type",
+        "operator": "equals",
+        "value": "Lead"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Student"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "LastName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Region",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Student_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Language",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "LeadSource",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Demo_lesson_Follow_Up_Call (North)",
+    "key": "no_demo_fuc",
+    "description": "North — Leads with Follow Up Call status and call scheduled for Tomorrow.",
+    "business_unit_id": "bu_north",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "Follow Up Call"
+      },
+      {
+        "field": "Student_Type",
+        "operator": "equals",
+        "value": "Lead"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Student"
+      },
+      {
+        "field": "FollowUpCallDate",
+        "operator": "equals",
+        "value": "Today+1"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Student_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "FollowUpCallDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Demo_lesson_Signed_for_Demo (North)",
+    "key": "no_demo_pending_demo",
+    "description": "North — Contacts signed for a demo with a future demo date. Entry for Pending Demo journey.",
+    "business_unit_id": "bu_north",
+    "entry_criteria": [
+      {
+        "field": "Status_in_LG",
+        "operator": "equals",
+        "value": "Signed for Demo"
+      },
+      {
+        "field": "Student_Type",
+        "operator": "equals",
+        "value": "Contact"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Student"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "is_not_empty",
+        "value": null
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "greater_than",
+        "value": "Today"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status_in_LG",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Student_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Demo_Date",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Demo_Time",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Demo_lesson_Pending_Reminder (North)",
+    "key": "no_demo_pending_reminder",
+    "description": "North — Contacts with demo scheduled for Tomorrow. Entry for Pending Reminder journey.",
+    "business_unit_id": "bu_north",
+    "entry_criteria": [
+      {
+        "field": "Status_in_LG",
+        "operator": "equals",
+        "value": "Signed for Demo"
+      },
+      {
+        "field": "Student_Type",
+        "operator": "equals",
+        "value": "Contact"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Student"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "equals",
+        "value": "Today+1"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status_in_LG",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Student_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Demo_Date",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Demo_Time",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Demo_lesson_Show_Demo (North)",
+    "key": "no_demo_show_demo",
+    "description": "North — Contacts who attended the demo (Done Demo) in the past 3 days.",
+    "business_unit_id": "bu_north",
+    "entry_criteria": [
+      {
+        "field": "Status_in_LG",
+        "operator": "equals",
+        "value": "Done Demo"
+      },
+      {
+        "field": "Student_Type",
+        "operator": "equals",
+        "value": "Contact"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Student"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "less_than",
+        "value": "Today"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "greater_than",
+        "value": "Today-3"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status_in_LG",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Student_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Demo_Date",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Demo_lesson_No_Show_Demo (North)",
+    "key": "no_demo_no_show",
+    "description": "North — Contacts who didn't show for demo, within the last 7 days.",
+    "business_unit_id": "bu_north",
+    "entry_criteria": [
+      {
+        "field": "Status_in_LG",
+        "operator": "equals",
+        "value": "Didn't show for Demo"
+      },
+      {
+        "field": "Student_Type",
+        "operator": "equals",
+        "value": "Contact"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Student"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "greater_than",
+        "value": "Today-7"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "less_than",
+        "value": "Today+1"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status_in_LG",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Demo_Date",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_New (North)",
+    "key": "no_fr_new",
+    "description": "North — New franchisee leads.",
+    "business_unit_id": "bu_north",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "New"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "LastName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Region",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Language",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_NDA (North)",
+    "key": "no_fr_nda",
+    "description": "North — Franchisee leads at NDA status.",
+    "business_unit_id": "bu_north",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "NDA"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_Follow_Up_Call (North)",
+    "key": "no_fr_fuc",
+    "description": "North — Franchisee leads with follow-up call scheduled for Tomorrow.",
+    "business_unit_id": "bu_north",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "Follow Up Call"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      },
+      {
+        "field": "FollowUpCallDate",
+        "operator": "is_not_empty",
+        "value": null
+      },
+      {
+        "field": "FollowUpCallDate",
+        "operator": "equals",
+        "value": "Today+1"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "FollowUpCallDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_NDA_Signed (North)",
+    "key": "no_fr_nda_signed",
+    "description": "North — Franchisee leads who signed the NDA.",
+    "business_unit_id": "bu_north",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "NDA Signed"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_Prospect (North)",
+    "key": "no_fr_prospect",
+    "description": "North — Franchisee prospects with a meeting booked in the future.",
+    "business_unit_id": "bu_north",
+    "entry_criteria": [
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      },
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "Prospect"
+      },
+      {
+        "field": "CalMeetingDate",
+        "operator": "is_not_empty",
+        "value": null
+      },
+      {
+        "field": "CalMeetingDate",
+        "operator": "greater_than",
+        "value": "Today"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalMeetingDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalMeetingTime",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalMeetingLink",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_Prospect_Reminder (North)",
+    "key": "no_fr_prospect_reminder",
+    "description": "North — Franchisee prospects with meeting scheduled for Tomorrow.",
+    "business_unit_id": "bu_north",
+    "entry_criteria": [
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      },
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "Prospect"
+      },
+      {
+        "field": "CalMeetingDate",
+        "operator": "is_not_empty",
+        "value": null
+      },
+      {
+        "field": "CalMeetingDate",
+        "operator": "equals",
+        "value": "Today+1"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalMeetingDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalMeetingTime",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_PPT_Booked (North)",
+    "key": "no_fr_ppt_booked",
+    "description": "North — Franchisee leads with PPT meeting booked in the future.",
+    "business_unit_id": "bu_north",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "PPT Booked"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      },
+      {
+        "field": "CalPPTDate",
+        "operator": "is_not_empty",
+        "value": null
+      },
+      {
+        "field": "CalPPTDate",
+        "operator": "greater_than",
+        "value": "Today"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalPPTDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalPPTTime",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalPPTLink",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_PPT_Booked_Reminder (North)",
+    "key": "no_fr_ppt_reminder",
+    "description": "North — Franchisee leads with PPT meeting scheduled for Tomorrow.",
+    "business_unit_id": "bu_north",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "PPT Booked"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      },
+      {
+        "field": "CalPPTDate",
+        "operator": "is_not_empty",
+        "value": null
+      },
+      {
+        "field": "CalPPTDate",
+        "operator": "equals",
+        "value": "Today+1"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalPPTDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalPPTTime",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "South_All_Leads",
+    "key": "so_all_leads",
+    "description": "Built by South_All_Leads SQL from South_Subscribers_Shared. Source for all South journey DEs.",
+    "business_unit_id": "bu_south",
+    "entry_criteria": [],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "Demo_Lesson_New (South)",
+    "key": "so_demo_new",
+    "description": "South — New demo lesson leads.",
+    "business_unit_id": "bu_south",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "New"
+      },
+      {
+        "field": "Student_Type",
+        "operator": "equals",
+        "value": "Lead"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Student"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "LastName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Region",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Student_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Language",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "LeadSource",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": [
+      {
+        "ContactKey": "SO001",
+        "Email": "mario@example.com",
+        "FirstName": "Mario",
+        "LastName": "Rossi",
+        "Region": "South",
+        "Status": "New",
+        "Record_Type": "Student",
+        "Student_Type": "Lead",
+        "Language": "EN"
+      },
+      {
+        "ContactKey": "SO002",
+        "Email": "giulia@example.com",
+        "FirstName": "Giulia",
+        "LastName": "Bianchi",
+        "Region": "South",
+        "Status": "New",
+        "Record_Type": "Student",
+        "Student_Type": "Lead",
+        "Language": "EN"
+      }
+    ]
+  },
+  {
+    "name": "Demo_lesson_Follow_Up_Call (South)",
+    "key": "so_demo_fuc",
+    "description": "South — Leads with Follow Up Call status and call tomorrow.",
+    "business_unit_id": "bu_south",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "Follow Up Call"
+      },
+      {
+        "field": "Student_Type",
+        "operator": "equals",
+        "value": "Lead"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Student"
+      },
+      {
+        "field": "FollowUpCallDate",
+        "operator": "is_not_empty",
+        "value": null
+      },
+      {
+        "field": "FollowUpCallDate",
+        "operator": "equals",
+        "value": "Today+1"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Student_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "FollowUpCallDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Demo_lesson_Pending_Demo (South)",
+    "key": "so_demo_pending_demo",
+    "description": "South — Contacts signed for demo with a future demo date.",
+    "business_unit_id": "bu_south",
+    "entry_criteria": [
+      {
+        "field": "Status_in_LG",
+        "operator": "equals",
+        "value": "Signed for Demo"
+      },
+      {
+        "field": "Student_Type",
+        "operator": "equals",
+        "value": "Contact"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Student"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "greater_than",
+        "value": "Today"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "is_not_empty",
+        "value": null
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status_in_LG",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Student_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Demo_Date",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Demo_Time",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": [
+      {
+        "ContactKey": "SO003",
+        "Email": "luca@example.com",
+        "FirstName": "Luca",
+        "Status_in_LG": "Signed for Demo",
+        "Student_Type": "Contact",
+        "Record_Type": "Student",
+        "Demo_Date": "2026-04-01",
+        "Demo_Time": "10:00"
+      }
+    ]
+  },
+  {
+    "name": "Demo_lesson_Pending_Reminder (South)",
+    "key": "so_demo_pending_reminder",
+    "description": "South — Contacts with demo scheduled for Tomorrow.",
+    "business_unit_id": "bu_south",
+    "entry_criteria": [
+      {
+        "field": "Status_in_LG",
+        "operator": "equals",
+        "value": "Signed for Demo"
+      },
+      {
+        "field": "Student_Type",
+        "operator": "equals",
+        "value": "Contact"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Student"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "equals",
+        "value": "Today+1"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status_in_LG",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Demo_Date",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Demo_Time",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Demo_lesson_Attend_Demo (South)",
+    "key": "so_demo_show_demo",
+    "description": "South — Contacts who attended demo (Done Demo) in the past 3 days, Status = Prospect.",
+    "business_unit_id": "bu_south",
+    "entry_criteria": [
+      {
+        "field": "Status_in_LG",
+        "operator": "equals",
+        "value": "Done Demo"
+      },
+      {
+        "field": "Student_Type",
+        "operator": "equals",
+        "value": "Contact"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Student"
+      },
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "Prospect"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "less_than",
+        "value": "Today"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "greater_than",
+        "value": "Today-3"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status_in_LG",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Demo_Date",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Demo_lesson_No_Show_Demo (South)",
+    "key": "so_demo_no_show",
+    "description": "South — Contacts who didn't show for demo, within the last 7 days.",
+    "business_unit_id": "bu_south",
+    "entry_criteria": [
+      {
+        "field": "Status_in_LG",
+        "operator": "equals",
+        "value": "Didn't show for Demo"
+      },
+      {
+        "field": "Student_Type",
+        "operator": "equals",
+        "value": "Contact"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Student"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "greater_than",
+        "value": "Today-7"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "less_than",
+        "value": "Today+1"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status_in_LG",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Demo_Date",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_New (South)",
+    "key": "so_fr_new",
+    "description": "South — New franchisee leads.",
+    "business_unit_id": "bu_south",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "New"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "LastName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Region",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Language",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": [
+      {
+        "ContactKey": "SO010",
+        "Email": "franchise@example.com",
+        "FirstName": "Roberto",
+        "LastName": "Ferrari",
+        "Region": "South",
+        "Status": "New",
+        "Record_Type": "Franchisee",
+        "Language": "EN"
+      }
+    ]
+  },
+  {
+    "name": "Franchisee_Leads_Prospect (South)",
+    "key": "so_fr_prospect",
+    "description": "South — Franchisee prospects with a meeting booked in the future.",
+    "business_unit_id": "bu_south",
+    "entry_criteria": [
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      },
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "Prospect"
+      },
+      {
+        "field": "CalMeetingDate",
+        "operator": "is_not_empty",
+        "value": null
+      },
+      {
+        "field": "CalMeetingDate",
+        "operator": "greater_than",
+        "value": "Today"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalMeetingDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalMeetingTime",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalMeetingLink",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_Prospect_Reminder (South)",
+    "key": "so_fr_prospect_reminder",
+    "description": "South — Franchisee prospects with meeting scheduled for Tomorrow.",
+    "business_unit_id": "bu_south",
+    "entry_criteria": [
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      },
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "Prospect"
+      },
+      {
+        "field": "CalMeetingDate",
+        "operator": "is_not_empty",
+        "value": null
+      },
+      {
+        "field": "CalMeetingDate",
+        "operator": "equals",
+        "value": "Today+1"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalMeetingDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalMeetingTime",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_Follow_Up_Call (South)",
+    "key": "so_fr_fuc",
+    "description": "South — Franchisee leads with follow-up call scheduled for Tomorrow.",
+    "business_unit_id": "bu_south",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "Follow Up Call"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      },
+      {
+        "field": "FollowUpCallDate",
+        "operator": "is_not_empty",
+        "value": null
+      },
+      {
+        "field": "FollowUpCallDate",
+        "operator": "equals",
+        "value": "Today+1"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "FollowUpCallDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_NDA_Signed (South)",
+    "key": "so_fr_nda_signed",
+    "description": "South — Franchisee leads who signed the NDA.",
+    "business_unit_id": "bu_south",
+    "entry_criteria": [
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      },
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "NDA Signed"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": [
+      {
+        "ContactKey": "SO020",
+        "Email": "nda@example.com",
+        "FirstName": "Anna",
+        "Status": "NDA Signed",
+        "Record_Type": "Franchisee"
+      }
+    ]
+  },
+  {
+    "name": "Franchisee_Leads_PPT_Booked (South)",
+    "key": "so_fr_ppt_booked",
+    "description": "South — Franchisee leads with PPT meeting booked in the future.",
+    "business_unit_id": "bu_south",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "PPT Booked"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      },
+      {
+        "field": "CalPPTDate",
+        "operator": "greater_than",
+        "value": "Today"
+      },
+      {
+        "field": "CalPPTDate",
+        "operator": "is_not_empty",
+        "value": null
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalPPTDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalPPTTime",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalPPTLink",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_PPT_Booked_Reminder (South)",
+    "key": "so_fr_ppt_reminder",
+    "description": "South — Franchisee leads with PPT meeting scheduled for Tomorrow.",
+    "business_unit_id": "bu_south",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "PPT Booked"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      },
+      {
+        "field": "CalPPTDate",
+        "operator": "is_not_empty",
+        "value": null
+      },
+      {
+        "field": "CalPPTDate",
+        "operator": "equals",
+        "value": "Today+1"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "Email",
+        "type": "EmailAddress",
+        "is_primary_key": false,
+        "is_required": true,
+        "default_value": null
+      },
+      {
+        "name": "FirstName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "Record_Type",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalPPTDate",
+        "type": "Date",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      },
+      {
+        "name": "CalName",
+        "type": "Text",
+        "is_primary_key": false,
+        "is_required": false,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "East_All_Leads",
+    "key": "ea_all_leads",
+    "description": "Built by East_All_Leads SQL from East_Subscribers_Shared.",
+    "business_unit_id": "bu_east",
+    "entry_criteria": [],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "Demo_Lesson_New (East)",
+    "key": "ea_demo_new",
+    "description": "East — same criteria as South.",
+    "business_unit_id": "bu_east",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "New"
+      },
+      {
+        "field": "Student_Type",
+        "operator": "equals",
+        "value": "Lead"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Student"
+      }
+    ],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "Demo_lesson_Follow_Up_Call (East)",
+    "key": "ea_demo_fuc",
+    "description": "East — same criteria as South.",
+    "business_unit_id": "bu_east",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "Follow Up Call"
+      },
+      {
+        "field": "Student_Type",
+        "operator": "equals",
+        "value": "Lead"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Student"
+      },
+      {
+        "field": "FollowUpCallDate",
+        "operator": "equals",
+        "value": "Today+1"
+      }
+    ],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "Demo_lesson_Pending_Demo (East)",
+    "key": "ea_demo_pending_demo",
+    "description": "East — same criteria as South.",
+    "business_unit_id": "bu_east",
+    "entry_criteria": [
+      {
+        "field": "Status_in_LG",
+        "operator": "equals",
+        "value": "Signed for Demo"
+      },
+      {
+        "field": "Student_Type",
+        "operator": "equals",
+        "value": "Contact"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Student"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "greater_than",
+        "value": "Today"
+      }
+    ],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "Demo_lesson_Pending_Reminder (East)",
+    "key": "ea_demo_pending_reminder",
+    "description": "East — same criteria as South.",
+    "business_unit_id": "bu_east",
+    "entry_criteria": [
+      {
+        "field": "Status_in_LG",
+        "operator": "equals",
+        "value": "Signed for Demo"
+      },
+      {
+        "field": "Student_Type",
+        "operator": "equals",
+        "value": "Contact"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Student"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "equals",
+        "value": "Today+1"
+      }
+    ],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "Demo_lesson_Attend_Demo (East)",
+    "key": "ea_demo_show_demo",
+    "description": "East — same criteria as South.",
+    "business_unit_id": "bu_east",
+    "entry_criteria": [
+      {
+        "field": "Status_in_LG",
+        "operator": "equals",
+        "value": "Done Demo"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "less_than",
+        "value": "Today"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "greater_than",
+        "value": "Today-3"
+      }
+    ],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "Demo_lesson_No_Show_Demo (East)",
+    "key": "ea_demo_no_show",
+    "description": "East — same criteria as South.",
+    "business_unit_id": "bu_east",
+    "entry_criteria": [
+      {
+        "field": "Status_in_LG",
+        "operator": "equals",
+        "value": "Didn't show for Demo"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "greater_than",
+        "value": "Today-7"
+      },
+      {
+        "field": "Demo_Date",
+        "operator": "less_than",
+        "value": "Today+1"
+      }
+    ],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_New (East)",
+    "key": "ea_fr_new",
+    "description": "East — same criteria as South.",
+    "business_unit_id": "bu_east",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "New"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      }
+    ],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_Prospect (East)",
+    "key": "ea_fr_prospect",
+    "description": "East — same criteria as South.",
+    "business_unit_id": "bu_east",
+    "entry_criteria": [
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      },
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "Prospect"
+      },
+      {
+        "field": "CalMeetingDate",
+        "operator": "is_not_empty",
+        "value": null
+      },
+      {
+        "field": "CalMeetingDate",
+        "operator": "greater_than",
+        "value": "Today"
+      }
+    ],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_Prospect_Reminder (East)",
+    "key": "ea_fr_prospect_reminder",
+    "description": "East.",
+    "business_unit_id": "bu_east",
+    "entry_criteria": [
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      },
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "Prospect"
+      },
+      {
+        "field": "CalMeetingDate",
+        "operator": "equals",
+        "value": "Today+1"
+      }
+    ],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_Follow_Up_Call (East)",
+    "key": "ea_fr_fuc",
+    "description": "East.",
+    "business_unit_id": "bu_east",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "Follow Up Call"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      },
+      {
+        "field": "FollowUpCallDate",
+        "operator": "equals",
+        "value": "Today+1"
+      }
+    ],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_NDA_Signed (East)",
+    "key": "ea_fr_nda_signed",
+    "description": "East.",
+    "business_unit_id": "bu_east",
+    "entry_criteria": [
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      },
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "NDA Signed"
+      }
+    ],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_PPT_Booked (East)",
+    "key": "ea_fr_ppt_booked",
+    "description": "East.",
+    "business_unit_id": "bu_east",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "PPT Booked"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      },
+      {
+        "field": "CalPPTDate",
+        "operator": "greater_than",
+        "value": "Today-1"
+      }
+    ],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "Franchisee_Leads_PPTBooked_Reminder (East)",
+    "key": "ea_fr_ppt_reminder",
+    "description": "East.",
+    "business_unit_id": "bu_east",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "PPT Booked"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Franchisee"
+      },
+      {
+        "field": "CalPPTDate",
+        "operator": "equals",
+        "value": "Today+1"
+      }
+    ],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "All active students (NO)",
+    "key": "all_active_students_cr",
+    "description": "",
+    "business_unit_id": "bu_north",
+    "entry_criteria": [],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "All active students (SO)",
+    "key": "all_active_students_it",
+    "description": "",
+    "business_unit_id": "bu_south",
+    "entry_criteria": [],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "All active students (EA)",
+    "key": "all_active_students_ro",
+    "description": "",
+    "business_unit_id": "bu_east",
+    "entry_criteria": [],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "All active students",
+    "key": "all_active_students",
+    "description": "",
+    "business_unit_id": "bu_north",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "Active"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Students"
+      }
+    ],
+    "fields": [],
+    "sample_rows": []
+  },
+  {
+    "name": "Age Group Babies",
+    "key": "age_group_babies",
+    "description": "",
+    "business_unit_id": "bu_north",
+    "entry_criteria": [
+      {
+        "field": "Status",
+        "operator": "equals",
+        "value": "Active"
+      },
+      {
+        "field": "Record_Type",
+        "operator": "equals",
+        "value": "Students"
+      }
+    ],
+    "fields": [
+      {
+        "name": "ContactKey",
+        "type": "Text",
+        "is_primary_key": true,
+        "is_required": true,
+        "default_value": null
+      }
+    ],
+    "sample_rows": []
+  },
+  {
+    "name": "Parent_All_Leads",
+    "key": "parent_all_leads",
+    "description": "HQ master DE — SQL query from Lead_Salesforce combining all leads before region segmentation. Source for all HQ-level Filtered DEs.",
+    "business_unit_id": "bu_hq",
+    "entry_criteria": [],
+    "fields": [
+      { "name": "ContactKey",            "type": "Text",         "is_primary_key": true,  "is_required": true,  "default_value": null },
+      { "name": "Email",                 "type": "EmailAddress", "is_primary_key": false, "is_required": true,  "default_value": null },
+      { "name": "FirstName",             "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "LastName",              "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Region",               "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Status",                "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Record_Type",           "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Student_Type",          "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Language",              "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Status_in_LG",          "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Demo_Date",             "type": "Date",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "FollowUpCallDate","type": "Date",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "CalMeetingDate",   "type": "Date",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "CalPPTDate",       "type": "Date",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "CalName",           "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null }
+    ]
+  },
+  {
+    "name": "Journey_New",
+    "key": "journey_new",
+    "description": "HQ Filtered DE — Franchisee leads with Status = New. Entry point for the New Franchisee journey at parent BU level.",
+    "business_unit_id": "bu_hq",
+    "entry_criteria": [
+      { "field": "Status",      "operator": "equals", "value": "New" },
+      { "field": "Record_Type", "operator": "equals", "value": "Franchisee" }
+    ],
+    "fields": [
+      { "name": "ContactKey",  "type": "Text",         "is_primary_key": true,  "is_required": true,  "default_value": null },
+      { "name": "Email",       "type": "EmailAddress", "is_primary_key": false, "is_required": true,  "default_value": null },
+      { "name": "FirstName",   "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "LastName",    "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Region",     "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Status",      "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Record_Type", "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Language",    "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null }
+    ]
+  },
+  {
+    "name": "Journey_Hot_Lead",
+    "key": "journey_hot_lead",
+    "description": "HQ Filtered DE — Franchisee leads marked as Hot Lead / Follow Up Call stage.",
+    "business_unit_id": "bu_hq",
+    "entry_criteria": [
+      { "field": "Status",      "operator": "equals", "value": "Follow Up Call" },
+      { "field": "Record_Type", "operator": "equals", "value": "Franchisee" }
+    ],
+    "fields": [
+      { "name": "ContactKey",            "type": "Text",         "is_primary_key": true,  "is_required": true,  "default_value": null },
+      { "name": "Email",                 "type": "EmailAddress", "is_primary_key": false, "is_required": true,  "default_value": null },
+      { "name": "FirstName",             "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Status",                "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Record_Type",           "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "FollowUpCallDate","type": "Date",         "is_primary_key": false, "is_required": false, "default_value": null }
+    ]
+  },
+  {
+    "name": "Journey_Prospect",
+    "key": "journey_prospect",
+    "description": "HQ Filtered DE — Franchisee leads at Prospect stage.",
+    "business_unit_id": "bu_hq",
+    "entry_criteria": [
+      { "field": "Status",      "operator": "equals", "value": "Prospect" },
+      { "field": "Record_Type", "operator": "equals", "value": "Franchisee" }
+    ],
+    "fields": [
+      { "name": "ContactKey",          "type": "Text",         "is_primary_key": true,  "is_required": true,  "default_value": null },
+      { "name": "Email",               "type": "EmailAddress", "is_primary_key": false, "is_required": true,  "default_value": null },
+      { "name": "FirstName",           "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Status",              "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Record_Type",         "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "CalMeetingDate", "type": "Date",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "CalName",         "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null }
+    ]
+  },
+  {
+    "name": "Journey_NDA",
+    "key": "journey_nda",
+    "description": "HQ Filtered DE — Franchisee leads at NDA stage (NDA sent, not yet signed).",
+    "business_unit_id": "bu_hq",
+    "entry_criteria": [
+      { "field": "Status",      "operator": "equals", "value": "NDA" },
+      { "field": "Record_Type", "operator": "equals", "value": "Franchisee" }
+    ],
+    "fields": [
+      { "name": "ContactKey",  "type": "Text",         "is_primary_key": true,  "is_required": true,  "default_value": null },
+      { "name": "Email",       "type": "EmailAddress", "is_primary_key": false, "is_required": true,  "default_value": null },
+      { "name": "FirstName",   "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Status",      "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Record_Type", "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null }
+    ]
+  },
+  {
+    "name": "Journey_NDA_Signed",
+    "key": "journey_nda_signed",
+    "description": "HQ Filtered DE — Franchisee leads who signed the NDA.",
+    "business_unit_id": "bu_hq",
+    "entry_criteria": [
+      { "field": "Status",      "operator": "equals", "value": "NDA Signed" },
+      { "field": "Record_Type", "operator": "equals", "value": "Franchisee" }
+    ],
+    "fields": [
+      { "name": "ContactKey",  "type": "Text",         "is_primary_key": true,  "is_required": true,  "default_value": null },
+      { "name": "Email",       "type": "EmailAddress", "is_primary_key": false, "is_required": true,  "default_value": null },
+      { "name": "FirstName",   "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Status",      "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Record_Type", "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null }
+    ]
+  },
+  {
+    "name": "Journey_PPT_Booked",
+    "key": "journey_ppt_booked",
+    "description": "HQ Filtered DE — Franchisee leads who booked the PPT presentation.",
+    "business_unit_id": "bu_hq",
+    "entry_criteria": [
+      { "field": "Status",         "operator": "equals",    "value": "PPT Booked" },
+      { "field": "Record_Type",    "operator": "equals",    "value": "Franchisee" },
+      { "field": "CalPPTDate","operator": "is_not_empty","value": "" }
+    ],
+    "fields": [
+      { "name": "ContactKey",    "type": "Text",         "is_primary_key": true,  "is_required": true,  "default_value": null },
+      { "name": "Email",         "type": "EmailAddress", "is_primary_key": false, "is_required": true,  "default_value": null },
+      { "name": "FirstName",     "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Status",        "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "Record_Type",   "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "CalPPTDate","type": "Date",        "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "CalPPTTime","type": "Text",        "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "CalPPTLink","type": "Text",        "is_primary_key": false, "is_required": false, "default_value": null },
+      { "name": "CalName",   "type": "Text",         "is_primary_key": false, "is_required": false, "default_value": null }
+    ]
+  }
+]

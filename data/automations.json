@@ -1,0 +1,449 @@
+[
+  {
+    "name": "Synchronization Lead",
+    "key": "auto_sync_lead",
+    "layer": "Salesforce Sync",
+    "description": "SF Connect sync — pulls all Lead records from Salesforce CRM into Lead_Salesforce synchronized DE in HQ. Runs every 15 min.",
+    "business_unit_id": "bu_hq",
+    "schedule": "*/15 * * * *",
+    "steps": [
+      {
+        "type": "salesforce_sync",
+        "name": "SF Sync — Lead Object",
+        "source": "SalesForce Connect - Lead Object",
+        "target_de": "lead_salesforce"
+      }
+    ]
+  },
+  {
+    "name": "Synchronization Contact",
+    "key": "auto_sync_contact",
+    "layer": "Salesforce Sync",
+    "description": "SF Connect sync — pulls all Contact records from Salesforce CRM into Contact_Salesforce synchronized DE in HQ. Runs every 15 min.",
+    "business_unit_id": "bu_hq",
+    "schedule": "*/15 * * * *",
+    "steps": [
+      {
+        "type": "salesforce_sync",
+        "name": "SF Sync — Contact Object",
+        "source": "SalesForce Connect - Contact Object",
+        "target_de": "contact_salesforce"
+      }
+    ]
+  },
+  {
+    "name": "Segmentation",
+    "key": "auto_segmentation_hq",
+    "layer": "Parent Automation",
+    "description": "Parent BU automation — SQL query builds Parent_All_Leads from Lead_Salesforce, then Filtered DEs split by journey type (New, Hot_Lead, Prospect, NDA, NDA_Signed, PPT_Booked). Runs every 15 min.",
+    "business_unit_id": "bu_hq",
+    "schedule": "*/15 * * * *",
+    "steps": [
+      {
+        "type": "sql_query",
+        "name": "Parent_Segment",
+        "source": "Lead_Salesforce",
+        "description": "Builds the master Parent_All_Leads DE from Lead_Salesforce",
+        "target_de": "parent_all_leads"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Journey_New",
+        "source": "Parent_All_Leads",
+        "target_de": "journey_new"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Journey_Hot_Lead",
+        "source": "Parent_All_Leads",
+        "target_de": "journey_hot_lead"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Journey_Prospect",
+        "source": "Parent_All_Leads",
+        "target_de": "journey_prospect"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Journey_NDA",
+        "source": "Parent_All_Leads",
+        "target_de": "journey_nda"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Journey_NDA_Signed",
+        "source": "Parent_All_Leads",
+        "target_de": "journey_nda_signed"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Journey_PPT_Booked",
+        "source": "Parent_All_Leads",
+        "target_de": "journey_ppt_booked"
+      }
+    ]
+  },
+  {
+    "name": "Subscribers Update",
+    "key": "auto_subscribers_update",
+    "layer": "Child Automation",
+    "description": "HQ child automation — joins Lead/Contact/Account Salesforce objects into Demo_Subscribers DE, then splits by region into shared DEs (SO, NO, EA, WE). Runs every 15 min after Segmentation.",
+    "business_unit_id": "bu_hq",
+    "schedule": "*/15 * * * *",
+    "steps": [
+      {
+        "type": "sql_query",
+        "name": "Student_Leads",
+        "source": "Lead_Salesforce + User_Salesforce + Account_Salesforce",
+        "description": "Builds Demo_Subscribers from student leads via SQL join",
+        "query": "SELECT ContactKey, EmailAddress, FirstName, LastName, Record_Type, Student_Type, Status, Status_in_LG, Demo_Date, FollowUpCallDate, CalMeetingDate, CalPPTDate, CalName, Region FROM Lead_Salesforce",
+        "target_de": "demo_subscribers"
+      },
+      {
+        "type": "sql_query",
+        "name": "Student_Contacts",
+        "source": "Contact_Salesforce + LG_Salesforce + LG_Student_Salesforce + Account_Salesforce",
+        "description": "Appends contact records to Demo_Subscribers",
+        "query": "SELECT ContactKey, EmailAddress, FirstName, LastName, Record_Type, Student_Type, Status, Status_in_LG, Demo_Date, FollowUpCallDate, CalMeetingDate, CalPPTDate, CalName, Region FROM Contact_Salesforce",
+        "target_de": "demo_subscribers"
+      },
+      {
+        "type": "sql_query",
+        "name": "South_Subscribers",
+        "source": "Demo_Subscribers",
+        "description": "Filters South records into shared DE for South child BU",
+        "query": "SELECT * FROM Demo_Subscribers WHERE Region = 'South'",
+        "target_de": "so_subscribers_shared"
+      },
+      {
+        "type": "sql_query",
+        "name": "North_Subscribers",
+        "source": "Demo_Subscribers",
+        "description": "Filters North records into shared DE for North child BU",
+        "query": "SELECT * FROM Demo_Subscribers WHERE Region = 'North'",
+        "target_de": "no_subscribers_shared"
+      },
+      {
+        "type": "sql_query",
+        "name": "East_Subscribers",
+        "source": "Demo_Subscribers",
+        "description": "Filters East records into shared DE for East child BU",
+        "query": "SELECT * FROM Demo_Subscribers WHERE Region = 'East'",
+        "target_de": "ea_subscribers_shared"
+      },
+      {
+        "type": "sql_query",
+        "name": "West_Subscribers",
+        "source": "Demo_Subscribers",
+        "description": "Filters West records into shared DE for West child BU",
+        "query": "SELECT * FROM Demo_Subscribers WHERE Region = 'West'",
+        "target_de": "we_subscribers_shared"
+      }
+    ]
+  },
+  {
+    "name": "South Segments",
+    "key": "auto_segments_south",
+    "layer": "Child Automation",
+    "description": "South child BU — SQL builds South_All_Leads from shared DE, then segment queries populate all journey entry DEs. Runs every 15 min.",
+    "business_unit_id": "bu_south",
+    "schedule": "*/15 * * * *",
+    "steps": [
+      {
+        "type": "sql_query",
+        "name": "South_All_Leads",
+        "source": "South_Subscribers_Shared",
+        "query": "SELECT * FROM SO_Shared",
+        "target_de": "so_all_leads"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Demo_Lesson_New",
+        "source": "South_All_Leads",
+        "query": "SELECT * FROM South_All_Leads WHERE Status = 'New' AND Student_Type = 'Lead' AND Record_Type = 'Student'",
+        "target_de": "so_demo_new"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Demo_Follow_UP_Call",
+        "source": "South_All_Leads",
+        "query": "SELECT * FROM South_All_Leads WHERE Student_Type IN ('Lead','Contact') AND Record_Type = 'Student' AND DATEDIFF(day, GETDATE(), FollowUpCallDate) = 1",
+        "target_de": "so_demo_fuc"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Demo_Lesson_Pending_Demo",
+        "source": "South_All_Leads",
+        "query": "SELECT * FROM South_All_Leads WHERE Status = 'Pending Demo' AND Student_Type = 'Lead' AND Record_Type = 'Student'",
+        "target_de": "so_demo_pending_demo"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Demo_Lesson_Pending_Reminder",
+        "source": "South_All_Leads",
+        "query": "SELECT * FROM South_All_Leads WHERE Status = 'Pending Demo' AND DATEDIFF(day, GETDATE(), Demo_Date) = 1",
+        "target_de": "so_demo_pending_reminder"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Demo_Lesson_Attend_Demo",
+        "source": "South_All_Leads",
+        "query": "SELECT * FROM South_All_Leads WHERE Status_in_LG = 'Done Demo' AND Student_Type = 'Contact' AND Record_Type = 'Student'",
+        "target_de": "so_demo_show_demo"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Demo_Lesson_No_Show_Demo",
+        "source": "South_All_Leads",
+        "query": "SELECT * FROM South_All_Leads WHERE Status = 'No Show' AND Record_Type = 'Student'",
+        "target_de": "so_demo_no_show"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_New",
+        "source": "South_All_Leads",
+        "query": "SELECT * FROM South_All_Leads WHERE Status = 'New' AND Record_Type = 'Franchisee'",
+        "target_de": "so_fr_new"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_Follow_Up_Call",
+        "source": "South_All_Leads",
+        "query": "SELECT * FROM South_All_Leads WHERE Record_Type = 'Franchisee' AND DATEDIFF(day, GETDATE(), FollowUpCallDate) = 1",
+        "target_de": "so_fr_fuc"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_Prospect",
+        "source": "South_All_Leads",
+        "query": "SELECT * FROM South_All_Leads WHERE Status = 'Prospect' AND Record_Type = 'Franchisee'",
+        "target_de": "so_fr_prospect"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_Prospect_Reminder",
+        "source": "South_All_Leads",
+        "query": "SELECT * FROM South_All_Leads WHERE Status = 'Prospect' AND Record_Type = 'Franchisee' AND DATEDIFF(day, GETDATE(), FollowUpCallDate) = 1",
+        "target_de": "so_fr_prospect_reminder"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_NDA_Signed",
+        "source": "South_All_Leads",
+        "query": "SELECT * FROM South_All_Leads WHERE Status = 'NDA Signed' AND Record_Type = 'Franchisee'",
+        "target_de": "so_fr_nda_signed"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_PPT_Booked",
+        "source": "South_All_Leads",
+        "query": "SELECT * FROM South_All_Leads WHERE Record_Type = 'Franchisee' AND CalPPTDate IS NOT NULL",
+        "target_de": "so_fr_ppt_booked"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_PPTBooked_Reminder",
+        "source": "South_All_Leads",
+        "query": "SELECT * FROM South_All_Leads WHERE Record_Type = 'Franchisee' AND DATEDIFF(day, GETDATE(), CalPPTDate) = 1",
+        "target_de": "so_fr_ppt_reminder"
+      }
+    ]
+  },
+  {
+    "name": "North Segmentation",
+    "key": "auto_segments_north",
+    "layer": "Child Automation",
+    "description": "North child BU — SQL builds North_All_Leads from shared DE, then segment queries populate all journey entry DEs. Runs every 15 min.",
+    "business_unit_id": "bu_north",
+    "schedule": "*/15 * * * *",
+    "steps": [
+      {
+        "type": "sql_query",
+        "name": "North_All_Leads",
+        "source": "North_Subscribers_Shared",
+        "query": "SELECT * FROM NO_Shared",
+        "target_de": "no_all_leads"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Demo_Lesson_New",
+        "source": "North_All_Leads",
+        "target_de": "no_demo_new"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Demo_Follow_UP_Call",
+        "source": "North_All_Leads",
+        "target_de": "no_demo_fuc"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Demo_Lesson_Pending_Demo",
+        "source": "North_All_Leads",
+        "target_de": "no_demo_pending_demo"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Demo_Lesson_Pending_Reminder",
+        "source": "North_All_Leads",
+        "target_de": "no_demo_pending_reminder"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Demo_Lesson_Attend_Demo",
+        "source": "North_All_Leads",
+        "target_de": "no_demo_show_demo"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Demo_Lesson_No_Show_Demo",
+        "source": "North_All_Leads",
+        "target_de": "no_demo_no_show"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_New",
+        "source": "North_All_Leads",
+        "target_de": "no_fr_new"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_Follow_Up_Call",
+        "source": "North_All_Leads",
+        "target_de": "no_fr_fuc"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_Prospect",
+        "source": "North_All_Leads",
+        "target_de": "no_fr_prospect"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_Prospect_Reminder",
+        "source": "North_All_Leads",
+        "target_de": "no_fr_prospect_reminder"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_NDA",
+        "source": "North_All_Leads",
+        "target_de": "no_fr_nda"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_NDA_Signed",
+        "source": "North_All_Leads",
+        "target_de": "no_fr_nda_signed"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_PPT_Booked",
+        "source": "North_All_Leads",
+        "target_de": "no_fr_ppt_booked"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_PPTBooked_Reminder",
+        "source": "North_All_Leads",
+        "target_de": "no_fr_ppt_reminder"
+      }
+    ]
+  },
+  {
+    "name": "East Segments",
+    "key": "auto_segments_east",
+    "layer": "Child Automation",
+    "description": "East child BU — SQL builds East_All_Leads from shared DE, then segment queries populate all journey entry DEs. Runs every 15 min.",
+    "business_unit_id": "bu_east",
+    "schedule": "*/15 * * * *",
+    "steps": [
+      {
+        "type": "sql_query",
+        "name": "East_All_Leads",
+        "source": "East_Subscribers_Shared",
+        "query": "SELECT * FROM EA_Shared",
+        "target_de": "ea_all_leads"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Demo_Lesson_New",
+        "source": "East_All_Leads",
+        "target_de": "ea_demo_new"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Demo_Follow_UP_Call",
+        "source": "East_All_Leads",
+        "target_de": "ea_demo_fuc"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Demo_Lesson_Pending_Demo",
+        "source": "East_All_Leads",
+        "target_de": "ea_demo_pending_demo"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Demo_Lesson_Pending_Reminder",
+        "source": "East_All_Leads",
+        "target_de": "ea_demo_pending_reminder"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Demo_Lesson_Attend_Demo",
+        "source": "East_All_Leads",
+        "target_de": "ea_demo_show_demo"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Demo_Lesson_No_Show_Demo",
+        "source": "East_All_Leads",
+        "target_de": "ea_demo_no_show"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_New",
+        "source": "East_All_Leads",
+        "target_de": "ea_fr_new"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_Follow_Up_Call",
+        "source": "East_All_Leads",
+        "target_de": "ea_fr_fuc"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_Prospect",
+        "source": "East_All_Leads",
+        "target_de": "ea_fr_prospect"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_Prospect_Reminder",
+        "source": "East_All_Leads",
+        "target_de": "ea_fr_prospect_reminder"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_NDA_Signed",
+        "source": "East_All_Leads",
+        "target_de": "ea_fr_nda_signed"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_PPT_Booked",
+        "source": "East_All_Leads",
+        "target_de": "ea_fr_ppt_booked"
+      },
+      {
+        "type": "filtered_de",
+        "name": "Franchisee_Leads_PPTBooked_Reminder",
+        "source": "East_All_Leads",
+        "target_de": "ea_fr_ppt_reminder"
+      }
+    ]
+  }
+]
